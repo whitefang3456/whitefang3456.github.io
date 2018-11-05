@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MFF DV Farming Calculator (BETA)</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.min.js"></script>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#000000">
+</head>
+<style type="text/css">
+.m-icon {
+    max-height: 40px;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.info_box {
+    background: #e1e1e1;
+    padding: 16px 24px;
+}
+
+.info_box ul {
+    padding-left: 16px;
+}
+
+.intro_box {
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+.analysis {
+    color: #9c8131;
+}
+
+.analysis-table thead>tr>th {
+    background: #e1e1e1;
+}
+
+#supreme {
+    background: red;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left, orange, yellow, green, cyan, blue, violet);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, orange, yellow, green, cyan, blue, violet);
+    /* Standard syntax (must be last) */
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+</style>
+
+<body ng-app="mtabletCalc">
+    <div class="container" style="max-width: 960px;" ng-controller="CoreCalcCtrl">
+        <div class="row" style="background: #000;color: white;padding: 16px 8px;">
+            <div class="col-sm-12">
+                <h4 style="font-family:'Times New Roman';color:#9c8131">MobiusFF DV Farming Calculator (BETA)</h4>
+            </div>
+        </div>
+        <div class="intro_box">
+            <input type="checkbox" name="show_info_chk" ng-model="show_info">&nbsp;Check this for expand info "What's this"
+        </div>
+        <div ng-show="show_info" class="info_box">
+            <h4>What this tool does?</h4>
+            <ul>
+                <li>This app helps to calculate <i>approximate number of days</i> needed to farm ability/supreme cards from coming content of Dimensional Valley, according to resources you possess and inputs.</li>
+                <li><b>5700</b> cores can be obtained by clearing all challenge nodes in the DV. No tablet is required to access those nodes</li>
+                <li>
+                    <p><b>7500 cores</b> will be required to unlock 5-star regular Goku card</p>
+                </li>
+                <li>
+                    <p><b>20,000 cores</b> will be required to unlock 5-star Ultimate/Supreme Goku card</p>
+                </li>
+                <li>
+                    <b>Please be Noted</b> that this tool may only shows close estimation to the results, use as a grain of salts.
+                </li>
+            </ul>
+            <p>Untick the checkbox to hide this</p>
+        </div>
+        <br>
+        <!-- <div class="row">
+            <div class="col-sm-9">
+                <label>All Challenge node cleared (5700 cores)</label>
+            </div>
+            <div class="col-sm-3">
+                <input type="checkbox" class="" name="dv_core_checkbox" ng-model='dv_core_checkbox'>&nbsp;Check if Yes
+            </div>
+        </div>
+        <br> -->
+        <!-- P1 -->
+        <p>Before start, please input according to ONE SICARIUS CORES</p>
+        <div class="row">
+            <div class="col-xs-2 col-sm-1">
+                <img src="img/dvcore_ico.png" alt="" class="m-icon">
+            </div>
+            <div class="col-xs-10 col-sm-8">
+                <label>Number of cores farmed
+                    <br>コア数</label>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <input type="number" class="form-control" name="dv_core_farmed_txt" ng-model="dv_core_farmed_txt" placeholder="0">
+            </div>
+        </div>
+        <br>
+        <!-- P2 -->
+        <div class="row">
+            <div class="col-xs-2 col-sm-1">
+                <img src="img/mtablet_ico.png" alt="" class="m-icon">
+            </div>
+            <div class="col-xs-10 col-sm-8">
+                <label>Number of Mystic Tablets (3 tablets : 40 cores)
+                    <br> 神秘の石板 (3枚 : 40コア) </label>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <input type="number" class="form-control" name="dv_tablets_txt" ng-model="dv_tablets_txt" placeholder="0">
+            </div>
+        </div>
+        <br>
+        <!-- P3 -->
+        <div class="row">
+            <div class="col-xs-2 col-sm-1">
+                <img src="img/gregpass_ico.png" alt="" class="m-icon">
+            </div>
+            <div class="col-xs-10 col-sm-8">
+                <label>Number of Gilgamesh Pass (1 pass : 22 cores)
+                    <br>「ギルガメッシュ・パス」の数 (1枚 : 22コア)</label>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <input type="number" class="form-control" name="dv_gilg_pass_txt" ng-model="dv_gilg_pass_txt" placeholder="0">
+            </div>
+        </div>
+        <br>
+        <!-- P4 -->
+        <div class="row">
+            <div class="col-xs-2 col-sm-1">
+                <img src="img/rainbowkey_ico.png" alt="" class="m-icon">
+            </div>
+            <div class="col-xs-10 col-sm-8">
+                <label>Number of Rainbow Keys (1 key : 100 cores)
+                    <br> 虹のカギの数 (1枚 : 100コア) :</label>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <input type="number" class="form-control" name="dv_rainbow_keys_txt" ng-model="dv_rainbow_keys_txt" placeholder="0">
+            </div>
+        </div>
+        <br>
+        <hr>
+        <!-- T1 -->
+        <div class="row">
+            <div class="col-xs-7 col-sm-9 vcenter">
+                <label>Calculated Total Number of Cores farmed :</label>
+            </div>
+            <div class="col-xs-4 col-sm-2 vcenter">
+                <h4 name="dv_max_core_farm_txt" ng-model="dv_max_core_farm_txt" placeholder="0">{{calculateMaxCores(dv_core_farmed_txt,dv_tablets_txt,dv_gilg_pass_txt,dv_rainbow_keys_txt)}}&nbsp;cores</h4>
+            </div>
+        </div>
+        <!-- A1 -->
+        <h3 class="analysis">Analysis</h3>
+        <!-- T2 -->
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table analysis-table">
+                    <thead>
+                        <th>Card-to-get</th>
+                        <th>Regular 5-star Goku Card</th>
+                        <th id="supreme">Ultimate 5-star Goku Card</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>Remaining Cores Needed</b></td>
+                            <td>
+                                <p ng-class="{'text-success':remaining_regular_core_number <= 0,'text-danger':remaining_regular_core_number > 0}" name="remaining_regular_core_number" ng-model="remaining_regular_core_number">{{calculateRemainingCoresRegular(dv_max_core_farm_txt)}}</p>
+                            </td>
+                            <td>
+                                <p ng-class="{'text-success':remaining_supreme_core_number <= 0,'text-danger':remaining_supreme_core_number > 0}" name="remaining_supreme_core_number" ng-model="remaining_supreme_core_number">{{calculateRemainingCoresSupreme(dv_max_core_farm_txt)}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Remaining Tablets Needed</b></td>
+                            <td>
+                                <p ng-show="calculateRemainingTabletsRegular() > 0">
+                                    {{calculateRemainingTabletsRegular()}}</p>
+                                <p ng-show="calculateRemainingTabletsRegular() <= 0">0</p>
+                            </td>
+                            <td>
+                                <p ng-show="calculateRemainingTabletsSupreme() > 0">
+                                    {{calculateRemainingTabletsSupreme()}}</p>
+                                <p ng-show="calculateRemainingTabletsSupreme() <= 0">0</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Estimated Number of Days to Obtain Card</b></td>
+                            <td>
+                                <h4 ng-show="calculateRemainingDaysRegular() > 0">
+                                    {{calculateRemainingDaysRegular()}}&nbsp;days</h4>
+                                <h4 ng-show="calculateRemainingDaysRegular() <= 0">0</h4>
+                            </td>
+                            <td>
+                                <h4 ng-show="calculateRemainingDaysSupreme() > 0">
+                                    {{calculateRemainingDaysSupreme()}}&nbsp;days</h4>
+                                <h4 ng-show="calculateRemainingDaysSupreme() <= 0">0</h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Estimated Number of Days to Obtain Card (included weekly gil tablets x3)</b></td>
+                            <td>
+                                <h4 ng-show="calculateRemainingDaysRegular_weeklytabs() > 0">
+                                    {{calculateRemainingDaysRegular_weeklytabs()}}&nbsp;days</h4>
+                                <h4 ng-show="calculateRemainingDaysRegular_weeklytabs() <= 0">0</h4>
+                            </td>
+                            <td>
+                                <h4 ng-show="calculateRemainingDaysSupreme_weeklytabs() > 0">
+                                    {{calculateRemainingDaysSupreme_weeklytabs()}}&nbsp;days</h4>
+                                <h4 ng-show="calculateRemainingDaysSupreme_weeklytabs() <= 0">0</h4>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-12">
+                <p><i>Disclaimer:This calculator will only provide us an approximate/estimation value of results to be closest as possible. Please take this app as a grain of salts.</i>
+                    <b>Built with love by <a href="https://www.reddit.com/u/wf3456">wf3456</a> and helpful contributors from Reddit</b></p>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+var app = angular.module('mtabletCalc', [])
+    .controller('CoreCalcCtrl', ['$scope', function($scope) {
+        var rCores, sCores, maxCores;
+        $scope.dv_core_farmed_txt = 5700;
+        $scope.dv_tablets_txt = 0;
+        $scope.dv_gilg_pass_txt = 0;
+        $scope.dv_rainbow_keys_txt = 0;
+
+        $scope.calculateMaxCores = function(dv_core_farmed_txt, dv_tablets_txt, dv_gilg_pass_txt, dv_rainbow_keys_txt) {
+            maxCores = (dv_core_farmed_txt) + (40 * Math.floor(dv_tablets_txt / 3)) + (dv_gilg_pass_txt * 22) + (dv_rainbow_keys_txt * 100)
+            $scope.dv_max_core_farm_txt = maxCores; /*<------------------------must define as scope variable*/
+            return maxCores;
+        };
+        //Functions of remaining cores
+        $scope.calculateRemainingCoresRegular = function(dv_max_core_farm_txt) {
+            rCores = 7500 - dv_max_core_farm_txt;
+            $scope.remaining_regular_core_number = rCores;
+            return rCores;
+        }
+        $scope.calculateRemainingCoresSupreme = function(dv_max_core_farm_txt) {
+            sCores = 20000 - dv_max_core_farm_txt;
+            $scope.remaining_supreme_core_number = sCores;
+            return sCores;
+        }
+        //Functions of remaining tablets
+        $scope.calculateRemainingTabletsRegular = function() {
+            return 3 * (Math.round(rCores / 40));
+        }
+        $scope.calculateRemainingTabletsSupreme = function() {
+            return 3 * (Math.round(sCores / 40));
+        }
+        //Functions of remaining days
+        $scope.calculateRemainingDaysRegular = function() {
+
+            return Math.round(2 * (3 * (Math.round(rCores / 40))) / 3);
+
+        }
+        $scope.calculateRemainingDaysSupreme = function() {
+
+            return Math.round(2 * (3 * (Math.round(sCores / 40))) / 3);
+        }
+        //Functions of remaining days including tablets
+        $scope.calculateRemainingDaysRegular_weeklytabs = function() {
+
+            return Math.round(14 * (3 * (Math.round(rCores / 40))) / 27);
+
+        }
+        $scope.calculateRemainingDaysSupreme_weeklytabs = function() {
+
+            return Math.round(14 * (3 * (Math.round(sCores / 40))) / 27);
+        }
+    }]);
+</script>
+
+</html>
