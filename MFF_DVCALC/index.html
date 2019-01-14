@@ -221,7 +221,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><b translate="ESTIMATED_DAYS">Estimated Number of Days to Obtain Card</b></td>
+                            <td><b translate="ESTIMATED_DAYS">Estimated Number of Days to Obtain Card (included daily pass)</b></td>
                             <td>
                                 <h4 ng-show="calculateRemainingDaysRegular() > 0">
                                     {{calculateRemainingDaysRegular()}}&nbsp;<span translate="DAY_UNIT">days</span></h4>
@@ -283,7 +283,7 @@ var translationEN = {
         CARD_LABEL:'Card-to-get',
         REMAINING_CORE:'Remaining cores needed',
         REMAINING_TABLET:'Remaining tablets needed',
-        ESTIMATED_DAYS:'Estimated Number of Days to Obtain Card',
+        ESTIMATED_DAYS:'Estimated Number of Days to Obtain Card (included daily pass)',
         ESTIMATED_DAYS_WEEKLY_GIL:'Estimated Number of Days to Obtain Card (included weekly gil tablets x3)',
         DAY_UNIT:'days',
         DISCLAIMER_TXT:'Disclaimer: This calculator will only provide us an approximate/estimation value of results to be closest as possible. Please take this app as a grain of salts.',
@@ -313,7 +313,7 @@ var translationJP = {
         CARD_LABEL:'得られるカード',
         REMAINING_CORE:'残りのコア',
         REMAINING_TABLET:'残りの石板',
-        ESTIMATED_DAYS:'推定カード取得日数',
+        ESTIMATED_DAYS:'推定カード取得日数(毎日パスき含む)',
         ESTIMATED_DAYS_WEEKLY_GIL:'推定カード取得日数 (週刊ギル3枚石板を含む)',
         DAY_UNIT:'日',
         DISCLAIMER_TXT:'免責事項：この計算機は、可能な限り近い結果の概算値または推定値を提供します。',
@@ -337,58 +337,100 @@ app.controller('translateCtrl', function($scope, $translate) {
     reddit:'<a href="https://www.reddit.com/r/MobiusFF" target="_blank">Reddit MFF</a>'
   };
 });
-
 app.controller('CoreCalcCtrl', ['$scope', function($scope) {
-    var rCores, sCores, maxCores;
-    $scope.dv_core_farmed_txt = 5700;
-    $scope.dv_tablets_txt = 0;
-    $scope.dv_gilg_pass_txt = 0;
-    $scope.dv_rainbow_keys_txt = 0;
+        var rCores, sCores, maxCores;
+        $scope.dv_core_farmed_txt = 5700;
+        $scope.dv_tablets_txt = 0;
+        $scope.dv_gilg_pass_txt = 0;
+        $scope.dv_rainbow_keys_txt = 0;
 
-    $scope.calculateMaxCores = function(dv_core_farmed_txt, dv_tablets_txt, dv_gilg_pass_txt, dv_rainbow_keys_txt) {
-        maxCores = (dv_core_farmed_txt) + (40 * Math.floor(dv_tablets_txt / 3)) + (dv_gilg_pass_txt * 22) + (dv_rainbow_keys_txt * 100)
-        $scope.dv_max_core_farm_txt = maxCores; /*<------------------------must define as scope variable*/
-        return maxCores;
-    };
-    //Functions of remaining cores
-    $scope.calculateRemainingCoresRegular = function(dv_max_core_farm_txt) {
-        rCores = 7500 - dv_max_core_farm_txt;
-        $scope.remaining_regular_core_number = rCores;
-        return rCores;
-    }
-    $scope.calculateRemainingCoresSupreme = function(dv_max_core_farm_txt) {
-        sCores = 20000 - dv_max_core_farm_txt;
-        $scope.remaining_supreme_core_number = sCores;
-        return sCores;
-    }
-    //Functions of remaining tablets
-    $scope.calculateRemainingTabletsRegular = function() {
-        return 3 * (Math.round(rCores / 40));
-    }
-    $scope.calculateRemainingTabletsSupreme = function() {
-        return 3 * (Math.round(sCores / 40));
-    }
-    //Functions of remaining days
-    $scope.calculateRemainingDaysRegular = function() {
+        $scope.calculateMaxCores = function(dv_core_farmed_txt, dv_tablets_txt, dv_gilg_pass_txt, dv_rainbow_keys_txt) {
+            maxCores = (dv_core_farmed_txt) + (40 * Math.floor(dv_tablets_txt / 3)) + (dv_gilg_pass_txt * 22) + (dv_rainbow_keys_txt * 100)
+            $scope.dv_max_core_farm_txt = maxCores; /*<------------------------must define as scope variable*/
+            return maxCores;
+        };
+        //Functions of remaining cores
+        $scope.calculateRemainingCoresRegular = function(dv_max_core_farm_txt) {
+            rCores = 7500 - dv_max_core_farm_txt;
+            $scope.remaining_regular_core_number = rCores;
+            return rCores;
+        }
+        $scope.calculateRemainingCoresSupreme = function(dv_max_core_farm_txt) {
+            sCores = 20000 - dv_max_core_farm_txt;
+            $scope.remaining_supreme_core_number = sCores;
+            return sCores;
+        }
+        //Functions of remaining tablets
+        $scope.calculateRemainingTabletsRegular = function() {
+            var tablets = 3 * Math.floor(rCores / 40);
+            var coresNeeded = rCores % 40;
+            var corrections = 0;
+            if (coresNeeded >= 23) {
+                corrections = 3;
+            } else if (coresNeeded >= 11) {
+                corrections = 2;
+            } else if (coresNeeded >= 1) {
+                corrections = 1;
+            }
+            return tablets + corrections;
+        }
+        $scope.calculateRemainingTabletsSupreme = function() {
+            var tablets = 3 * Math.floor(sCores / 40);
+            var coresNeeded = sCores % 40;
+            var corrections = 0;
+            if (coresNeeded >= 23) {
+                corrections = 3;
+            } else if (coresNeeded >= 11) {
+                corrections = 2;
+            } else if (coresNeeded >= 1) {
+                corrections = 1;
+            }
+            return tablets + corrections;
+        }
+        //Functions of remaining days
+        $scope.calculateRemainingDaysRegular = function() {
+            return bsearch_core(coresPerDay, rCores, $scope.dv_tablets_txt % 3);
+        }
+        $scope.calculateRemainingDaysSupreme = function() {
+            return bsearch_core(coresPerDay, sCores, $scope.dv_tablets_txt % 3);
+        }
+        //Functions of remaining days including tablets
+        $scope.calculateRemainingDaysRegular_weeklytabs = function() {
+            return bsearch_core(coresPerDayWeeklyTablets, rCores, $scope.dv_tablets_txt % 3);
+        }
+        $scope.calculateRemainingDaysSupreme_weeklytabs = function() {
+            return bsearch_core(coresPerDayWeeklyTablets, sCores, $scope.dv_tablets_txt % 3);
+        }
+    }]);
 
-        return Math.round(2 * (3 * (Math.round(rCores / 40))) / 3);
 
+function bsearch_core(fn, target, tabletsOwned) {
+    var l = 0, r = 512;
+    while (l < r) {
+        var mid = Math.floor((l + r) / 2);
+        if (fn(mid, tabletsOwned) < target) {
+            l = mid + 1;
+        } else {
+            r = mid;
+        }
     }
-    $scope.calculateRemainingDaysSupreme = function() {
+    return l;
+}
 
-        return Math.round(2 * (3 * (Math.round(sCores / 40))) / 3);
-    }
-    //Functions of remaining days including tablets
-    $scope.calculateRemainingDaysRegular_weeklytabs = function() {
+function coresPerDay(d, tabletsOwned) {
+    var tablets = tabletsOwned + d + 3*Math.floor(d/6);
+    var tabletsLeftOver = tablets % 3;
+    var gilPass = d;
+    return (tablets - tabletsLeftOver) / 3 * 40 + gilPass * 22 + (tabletsLeftOver == 1 ? 10 : tabletsLeftOver * 11);
+}
 
-        return Math.round(14 * (3 * (Math.round(rCores / 40))) / 27);
+function coresPerDayWeeklyTablets(d, tabletsOwned) {
+    var tablets = tabletsOwned + d + 3*Math.floor(d/6) + 3*Math.floor(d/7);
+    var tabletsLeftOver = tablets % 3;
+    var gilPass = d;
+    return (tablets - tabletsLeftOver) / 3 * 40 + gilPass * 22 + (tabletsLeftOver == 1 ? 10 : tabletsLeftOver * 11);
+}
 
-    }
-    $scope.calculateRemainingDaysSupreme_weeklytabs = function() {
-
-        return Math.round(14 * (3 * (Math.round(sCores / 40))) / 27);
-    }
-}]);
 </script>
 
 </html>
