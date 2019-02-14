@@ -2,14 +2,14 @@
 <html>
 
 <head>
-    <title>MFF DV Farming Calculator (BETA)</title>
+    <title>MFF The Rift Farming Calculator (BETA) / メビウスFF石板計算機 </title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.7/angular.min.js"></script>
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#000000">
     <meta charset="UTF-8">
-    <meta name="description" content="Mobius Final Fantasy Mystic Tablet Calculator / メビウスFF石板計算機">
+    <meta name="description" content="Mobius Final Fantasy The Rift Farming Calculator / メビウスFF石板計算機">
     <meta name="keywords" content="MobiusFF, Final Fantasy, メビウスFF, 石板計算機">
     <meta name="author" content="wfang3456">
 </head>
@@ -50,7 +50,6 @@
     background-color: #9d8218 !important;
     color:#fff !important;
 }
-
 .info_box {
     background: #e1e1e1;
     padding: 16px 24px;
@@ -77,14 +76,17 @@
 #supreme {
     background: red;
     /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left, orange, yellow, green, cyan, blue, violet);
+    background: -webkit-linear-gradient(left, orange, #fcfc30, #6fff6f, cyan, #4242f4, #e35de3);
     /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+    background: -o-linear-gradient(right, orange, #fcfc30, #6fff6f, cyan, #4242f4, #e35de3);
     /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+    background: -moz-linear-gradient(right, orange, #fcfc30, #6fff6f, cyan, #4242f4, #e35de3);
     /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to right, orange, yellow, green, cyan, blue, violet);
+    background: linear-gradient(to right, orange, #fcfc30, #6fff6f, cyan, #4242f4, #e35de3);
     /* Standard syntax (must be last) */
+    text-shadow:1px 1px 3px #fff;
+
+
 }
 
 .vcenter {
@@ -92,13 +94,35 @@
     vertical-align: middle;
     float: none;
 }
+
+.magicite_icon {
+max-width: 20px;    
+}
+.gl_tag{
+    padding: 6px 8px;
+    background: blue;
+    color: white;
+    border-radius: 12px;
+    margin-right:8px;
+}
+.jp_tag{
+    padding: 6px 8px;
+    background: red;
+    color: white;
+    border-radius: 12px;
+     margin-right:8px;
+}
+table > tbody > tr > td > h4 {
+margin: 0;
+font-size:12pt;
+}
 </style>
 
 <body ng-app="mtabletCalc" ng-controller="translateCtrl">
     <div class="container" ng-controller="CoreCalcCtrl">
         <div class="row header_bar">
             <div class="col-xs-12 col-sm-8">
-                <h4 class="title_heading" translate="TITLE">MobiusFF DV Farming Calculator (BETA)</h4>
+                <h4 class="title_heading" translate="TITLE">MobiusFF Rift Farming Calculator (BETA)</h4>
             </div>
             <div class="col-xs-12 col-sm-4 text-right" id="translate_box">
                 <a href="javascript:void(0)" name="translate_en" ng-click="changeLanguage('en')" class="btn btn-primary" ng-model="translate_en" ng-class="{'btn_active_en':language_used =='en'}" translate="BTN_EN">ENG</a>
@@ -111,10 +135,10 @@
         <div ng-show="show_info" class="info_box">
             <h4 translate="INFO_TITLE">What this tool does?</h4>
             <ul>
-                <li translate="INFO_DESCRIPTION_1">This app helps to calculate <i>approximate number of days</i> needed to farm ability/supreme cards from coming content of Dimensional Valley, according to resources you possess and inputs.</li>
-                <li translate="INFO_DESCRIPTION_2"><b>5700</b> cores can be obtained by clearing all challenge nodes in the DV. No tablet is required to access those nodes</li>
+                <li translate="INFO_DESCRIPTION_1">This app helps to calculate <i>approximate number of days</i> needed to farm ability/supreme cards from The Rift region, according to resources you possess and inputs.</li>
+                <li translate="INFO_DESCRIPTION_2"><b>5700</b> cores can be obtained by clearing all challenge nodes in The Rift. No tablet is required to access those nodes</li>
                 <li translate="INFO_DESCRIPTION_3"><b>7500 cores</b> will be required to unlock 5-star regular Extreme (極) Sicarius card.</li>
-                <li translate="INFO_DESCRIPTION_4"><b>20,000 cores</b> will be required to unlock 5-star Ultimate/Supreme True (真・極) Sicarius card</li>
+                <li translate="INFO_DESCRIPTION_4"><b>20,000 cores</b> will be required to unlock 5-star Ultimate/Supreme Extreme <b>X</b> (真・極) Sicarius card</li>
             </ul>
             <p translate="INFO_NOTE">Untick the checkbox to hide this</p>
         </div>
@@ -195,7 +219,7 @@
                     <thead>
                         <th translate="CARD_LABEL">Card-to-get</th>
                         <th translate="REGULAR_5_STAR">Regular 5&#x2605; Extreme Sic Card</th>
-                        <th id="supreme" translate="SUPREME_5_STAR">Supreme 5&#x2605; True Sic Card</th>
+                        <th id="supreme" translate="SUPREME_5_STAR">Supreme 5&#x2605; Extreme X Sic Card</th>
                     </thead>
                     <tbody>
                         <tr>
@@ -221,7 +245,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><b translate="ESTIMATED_DAYS">Estimated Number of Days to Obtain Card</b></td>
+                            <td><b translate="ESTIMATED_DAYS">Estimated Number of Days to Obtain Card (included daily pass)</b></td>
                             <td>
                                 <h4 ng-show="calculateRemainingDaysRegular() > 0">
                                     {{calculateRemainingDaysRegular()}}&nbsp;<span translate="DAY_UNIT">days</span></h4>
@@ -246,10 +270,69 @@
                                 <h4 ng-show="calculateRemainingDaysSupreme_weeklytabs() <= 0">0</h4>
                             </td>
                         </tr>
+                        <tr>
+                            <td><span class="jp_tag" translate="JP_TAG">GL</span><b translate="ESTIMATED_DAYS_PASS_SALE">Estimated Number of Days to Obtain Card (included monthly pass sale)</b></td>
+                            <td>
+                                <h4 ng-show="calculateRemainingDaysRegular_weeklytabs() > 0">
+                                    {{calculateRemainingDaysRegular_weeklytabs_shopsale()}}&nbsp;<span translate="DAY_UNIT">days</span></h4>
+                                <h4 ng-show="calculateRemainingDaysRegular_weeklytabs() <= 0">0</h4>
+                            </td>
+                            <td>
+                                <h4 ng-show="calculateRemainingDaysSupreme_weeklytabs() > 0">
+                                    {{calculateRemainingDaysSupreme_weeklytabs_shopsale()}}&nbsp;<span translate="DAY_UNIT">days</span></h4>
+                                <h4 ng-show="calculateRemainingDaysSupreme_weeklytabs() <= 0">0</h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="gl_tag" translate="GL_TAG">GL</span><b translate="REMAINING_MAGICITE_MODE_GL_NORMAL">Estimated Magicite Needed - Normal (12 tablets : 1000 magicites) </b></td>
+                            <td>
+                                <p ng-show="calculateMagiciteRegular_GL() >0">
+                                   {{calculateMagiciteRegular_GL()}}<img class="magicite_icon" src="img/magicite.png"> 
+                                </p>
+                                <p ng-show="calculateMagiciteRegular_GL() <= 0">0</p>
+                            </td>
+                            <td>
+                                <p ng-show="calculateMagiciteSupreme_GL() >0">
+                                    {{calculateMagiciteSupreme_GL()}} <img class="magicite_icon" src="img/magicite.png"> 
+                                </p>
+                                <p ng-show="calculateMagiciteSupreme_GL() <= 0">0</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="jp_tag" translate="JP_TAG">JP</span><b translate="REMAINING_MAGICITE_MODE_JP_NORMAL">Estimated Magicite Needed - Normal (9 tablets : 1000 magicites) </b></td>
+                            <td>
+                                <p ng-show="calculateMagiciteRegular_JP() >0">
+                                   {{calculateMagiciteRegular_JP()}}<img class="magicite_icon" src="img/magicite.png"> 
+                                </p>
+                                <p ng-show="calculateMagiciteRegular_JP() <= 0">0</p>
+                            </td>
+                            <td>
+                                <p ng-show="calculateMagiciteSupreme_JP() >0">
+                                 {{calculateMagiciteSupreme_JP()}} <img class="magicite_icon" src="img/magicite.png"> 
+                                </p>
+                                <p ng-show="calculateMagiciteSupreme_JP() <= 0">0</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="jp_tag" translate="JP_TAG">JP</span><b translate="REMAINING_MAGICITE_MODE_JP_SHOPSALE">Estimated Magicite Needed - Shop Sale (50 tablets : 4000 magicites, 9 tablets : 800 magicites)</b></td>
+                            <td>
+                                <p ng-show="calculateMagiciteRegular_JP_shopsale() >0">
+                                   {{calculateMagiciteRegular_JP_shopsale()}}<img class="magicite_icon" src="img/magicite.png"> 
+                                </p>
+                                <p ng-show="calculateMagiciteRegular_JP_shopsale() <= 0">0</p>
+                            </td>
+                            <td>
+                                <p ng-show="calculateMagiciteSupreme_JP_shopsale() >0">
+                                    {{calculateMagiciteSupreme_JP_shopsale()}} <img class="magicite_icon" src="img/magicite.png"> 
+                                </p>
+                                <p ng-show="calculateMagiciteSupreme_JP_shopsale() <= 0">0</p>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
             <div class="col-sm-12">
+                <p><sup translate="ASSUMPTION_TXT">Assumption: Pass Shop Sale is assumed for 8 days monthly (daily 3 passes);</sup></p>
                 <p><i translate="DISCLAIMER_TXT">Disclaimer:This calculator will only provide us an approximate/estimation value of results to be closest as possible. Please take this app as a grain of salts.</i>
                     <b translate="CREDIT_TEXT" translate-values="options">Built with love by <a href="https://www.reddit.com/u/wf3456">/u/wf3456</a> and helpful contributors from Reddit</b></p>
             </div>
@@ -261,14 +344,14 @@
 <script type="text/javascript">
 var translationEN = {
         BTN_EN:'ENG',
-        BTN_JP:'日語',
-        TITLE: 'MobiusFF DV Farming Calculator (BETA)',
+        BTN_JP:'日本語',
+        TITLE: 'MobiusFF The Rift Farming Calculator (BETA)',
         INFO_CHECKBOX:'For more info, please kindly click the checkbox',
         INFO_TITLE:'What this tool does?',
-        INFO_DESCRIPTION_1:'This app helps to calculate <u>approximate number of days</u> needed to farm ability/supreme cards from coming content of Dimensional Valley, according to resources you possess and inputs.',
-        INFO_DESCRIPTION_2:'<b>5,700 cores</b> can be obtained by clearing all challenge nodes in the DV. No tablet is required to access those nodes',
+        INFO_DESCRIPTION_1:'This app helps to calculate <u>approximate number of days</u> needed to farm ability/supreme cards from The Rift region, according to resources you possess and inputs.',
+        INFO_DESCRIPTION_2:'<b>5,700 cores</b> can be obtained by clearing all challenge nodes in The Rift. No tablet is required to access those nodes',
         INFO_DESCRIPTION_3:'<b>7,500 cores</b> will be required to unlock 5-star regular Extreme (極) Sicarius card',
-        INFO_DESCRIPTION_4:'<b>20,000 cores</b> will be required to unlock 5-star Ultimate/Supreme True (真・極) Sicarius card',
+        INFO_DESCRIPTION_4:'<b>20,000 cores</b> will be required to unlock 5-star Ultimate/Supreme Extreme <b>X</b> (真・極) Sicarius card',
         INFO_NOTE:'To close this, please kindly untick the checkbox',
         PRE_TEXT:'Before we begin, please kindly insert the inputs according to 1 kind of Extreme Sic',
         CORE_NUMBER_LABEL: 'Number of cores farmed',
@@ -279,19 +362,26 @@ var translationEN = {
         CORE_QUANTITY_LABEL: 'cores',
         ANALYSIS_LABEL:'Analysis',
         REGULAR_5_STAR:'Regular 5 ★ Extreme Sic Card',
-        SUPREME_5_STAR:'Supreme 5 ★ True Sic Card',
+        SUPREME_5_STAR:'Supreme 5 ★ Extreme X Sic Card',
         CARD_LABEL:'Card-to-get',
         REMAINING_CORE:'Remaining cores needed',
         REMAINING_TABLET:'Remaining tablets needed',
-        ESTIMATED_DAYS:'Estimated Number of Days to Obtain Card',
+        ESTIMATED_DAYS:'Estimated Number of Days to Obtain Card (included daily pass)',
         ESTIMATED_DAYS_WEEKLY_GIL:'Estimated Number of Days to Obtain Card (included weekly gil tablets x3)',
+        ESTIMATED_DAYS_PASS_SALE:'Estimated Number of Days to Obtain Card (included monthly Pass Shop Sale)',
+        GL_TAG:'GL',
+        JP_TAG:'JP',
+        REMAINING_MAGICITE_MODE_GL_NORMAL:'Estimated Magicite Needed - Normal (12 tablets : 1000 magicites)',
+        REMAINING_MAGICITE_MODE_JP_NORMAL:'Estimated Magicite Needed - Normal (9 tablets : 1000 magicites)',
+        REMAINING_MAGICITE_MODE_JP_SHOPSALE:'Estimated Magicite Needed - Shop Sale (50 tablets : 4000 magicites, 9 tablets : 800 magicites)',
         DAY_UNIT:'days',
+        ASSUMPTION_TXT:'Assumption: Pass Shop Sale is assumed for 8 days monthly (daily 3 passes);',
         DISCLAIMER_TXT:'Disclaimer: This calculator will only provide us an approximate/estimation value of results to be closest as possible. Please take this app as a grain of salts.',
         CREDIT_TEXT:'Built with love by {{owner}} and helpful contributors from {{reddit}}.'
     };
 var translationJP = {
         BTN_EN:'英語',
-        BTN_JP:'日語',
+        BTN_JP:'日本語',
         TITLE: 'メビウスFF石板計算機(ベータ)',
         INFO_CHECKBOX:'詳細については、チェックボックスをクリックしてください',
         INFO_TITLE:'このツールは何をしていますか？',
@@ -313,9 +403,16 @@ var translationJP = {
         CARD_LABEL:'得られるカード',
         REMAINING_CORE:'残りのコア',
         REMAINING_TABLET:'残りの石板',
-        ESTIMATED_DAYS:'推定カード取得日数',
+        ESTIMATED_DAYS:'推定カード取得日数(毎日パスき含む)',
         ESTIMATED_DAYS_WEEKLY_GIL:'推定カード取得日数 (週刊ギル3枚石板を含む)',
+        ESTIMATED_DAYS_PASS_SALE:'推定カード取得日数 (月額パスセールを含む)',
+        GL_TAG:'海外',
+        JP_TAG:'日本',
+        REMAINING_MAGICITE_MODE_GL_NORMAL:'合計魔石数 (12枚石板 : 1000魔石)',
+        REMAINING_MAGICITE_MODE_JP_NORMAL:'合計魔石数 (9枚石板 : 1000魔石)',
+        REMAINING_MAGICITE_MODE_JP_SHOPSALE:'合計魔石数 (50枚石板 : 4000魔石, 9枚石板 : 800魔石)',
         DAY_UNIT:'日',
+        ASSUMPTION_TXT:'推定: パスセールは8日間毎月推定(毎日3枚);',
         DISCLAIMER_TXT:'免責事項：この計算機は、可能な限り近い結果の概算値または推定値を提供します。',
         CREDIT_TEXT:'これは {{owner}} と他の{{reddit}}の貢献者による情熱をもって開発されました。'
     };
@@ -337,58 +434,196 @@ app.controller('translateCtrl', function($scope, $translate) {
     reddit:'<a href="https://www.reddit.com/r/MobiusFF" target="_blank">Reddit MFF</a>'
   };
 });
-
 app.controller('CoreCalcCtrl', ['$scope', function($scope) {
-    var rCores, sCores, maxCores;
-    $scope.dv_core_farmed_txt = 5700;
-    $scope.dv_tablets_txt = 0;
-    $scope.dv_gilg_pass_txt = 0;
-    $scope.dv_rainbow_keys_txt = 0;
+        var rCores, sCores, maxCores;
+        $scope.dv_core_farmed_txt = 5700;
+        $scope.dv_tablets_txt = 0;
+        $scope.dv_gilg_pass_txt = 0;
+        $scope.dv_rainbow_keys_txt = 0;
 
-    $scope.calculateMaxCores = function(dv_core_farmed_txt, dv_tablets_txt, dv_gilg_pass_txt, dv_rainbow_keys_txt) {
-        maxCores = (dv_core_farmed_txt) + (40 * Math.floor(dv_tablets_txt / 3)) + (dv_gilg_pass_txt * 22) + (dv_rainbow_keys_txt * 100)
-        $scope.dv_max_core_farm_txt = maxCores; /*<------------------------must define as scope variable*/
-        return maxCores;
-    };
-    //Functions of remaining cores
-    $scope.calculateRemainingCoresRegular = function(dv_max_core_farm_txt) {
-        rCores = 7500 - dv_max_core_farm_txt;
-        $scope.remaining_regular_core_number = rCores;
-        return rCores;
-    }
-    $scope.calculateRemainingCoresSupreme = function(dv_max_core_farm_txt) {
-        sCores = 20000 - dv_max_core_farm_txt;
-        $scope.remaining_supreme_core_number = sCores;
-        return sCores;
-    }
-    //Functions of remaining tablets
-    $scope.calculateRemainingTabletsRegular = function() {
-        return 3 * (Math.round(rCores / 40));
-    }
-    $scope.calculateRemainingTabletsSupreme = function() {
-        return 3 * (Math.round(sCores / 40));
-    }
-    //Functions of remaining days
-    $scope.calculateRemainingDaysRegular = function() {
+        $scope.calculateMaxCores = function(dv_core_farmed_txt, dv_tablets_txt, dv_gilg_pass_txt, dv_rainbow_keys_txt) {
+            maxCores = (dv_core_farmed_txt) + (40 * Math.floor(dv_tablets_txt / 3)) + (dv_gilg_pass_txt * 22) + (dv_rainbow_keys_txt * 100)
+            $scope.dv_max_core_farm_txt = maxCores; /*<------------------------must define as scope variable*/
+            return maxCores;
+        };
+        //Functions of remaining cores
+        $scope.calculateRemainingCoresRegular = function(dv_max_core_farm_txt) {
+            rCores = 7500 - dv_max_core_farm_txt;
+            $scope.remaining_regular_core_number = rCores;
+            return rCores;
+        }
+        $scope.calculateRemainingCoresSupreme = function(dv_max_core_farm_txt) {
+            sCores = 20000 - dv_max_core_farm_txt;
+            $scope.remaining_supreme_core_number = sCores;
+            return sCores;
+        }
+        //Functions of remaining tablets
+        $scope.calculateRemainingTabletsRegular = function() {
+            var tablets = 3 * Math.floor(rCores / 40);
+            var coresNeeded = rCores % 40;
+            var corrections = 0;
+            if (coresNeeded >= 23) {
+                corrections = 3;
+            } else if (coresNeeded >= 11) {
+                corrections = 2;
+            } else if (coresNeeded >= 1) {
+                corrections = 1;
+            }
+            return tablets + corrections;
+        }
+        $scope.calculateRemainingTabletsSupreme = function() {
+            var tablets = 3 * Math.floor(sCores / 40);
+            var coresNeeded = sCores % 40;
+            var corrections = 0;
+            if (coresNeeded >= 23) {
+                corrections = 3;
+            } else if (coresNeeded >= 11) {
+                corrections = 2;
+            } else if (coresNeeded >= 1) {
+                corrections = 1;
+            }
+            return tablets + corrections;
+        }
+        //Functions of remaining days
+        $scope.calculateRemainingDaysRegular = function() {
+            return bsearch_core(coresPerDay, rCores, $scope.dv_tablets_txt % 3);
+        }
+        $scope.calculateRemainingDaysSupreme = function() {
+            return bsearch_core(coresPerDay, sCores, $scope.dv_tablets_txt % 3);
+        }
+        //Functions of remaining days including tablets
+        $scope.calculateRemainingDaysRegular_weeklytabs = function() {
+            return bsearch_core(coresPerDayWeeklyTablets, rCores, $scope.dv_tablets_txt % 3);
+        }
+        $scope.calculateRemainingDaysSupreme_weeklytabs = function() {
+            return bsearch_core(coresPerDayWeeklyTablets, sCores, $scope.dv_tablets_txt % 3);
+        }
+        //Functions of remaining days including tablets + shopsale gil pass
+        $scope.calculateRemainingDaysRegular_weeklytabs_shopsale = function() {
+            return bsearch_core(coresPerDayWeeklyTabletsJP, rCores, $scope.dv_tablets_txt % 3);
+        }
+        $scope.calculateRemainingDaysSupreme_weeklytabs_shopsale = function() {
+            return bsearch_core(coresPerDayWeeklyTabletsJP, sCores, $scope.dv_tablets_txt % 3);
+        }
+        // GL & JP Magicite calculation - Regular Normal
+        $scope.calculateMagiciteRegular_GL = function() {
+           return calc_magicite_tablet_GL_normal($scope.calculateRemainingTabletsRegular());
+        }
+        $scope.calculateMagiciteRegular_JP = function() {
+           return calc_magicite_tablet_JP_normal($scope.calculateRemainingTabletsRegular());
+        }
+         // GL & JP Magicite calculation - Supreme Normal
+        $scope.calculateMagiciteSupreme_GL = function() {
+           return calc_magicite_tablet_GL_normal($scope.calculateRemainingTabletsSupreme());
+        }
+          $scope.calculateMagiciteSupreme_JP = function() {
+           return calc_magicite_tablet_JP_normal($scope.calculateRemainingTabletsSupreme());
+        }
+        //GL Magicite calculation shop sale
+        $scope.calculateMagiciteRegular_GL_shopsale = function() {
+           return calc_magicite_tablet_GL_shopsale($scope.calculateRemainingTabletsRegular());
+        }
+        $scope.calculateMagiciteSupreme_GL_shopsale = function() {
+           return calc_magicite_tablet_GL_shopsale($scope.calculateRemainingTabletsSupreme());
+        }
+        //JP Magicite calculation shop sale (JP Only)
+        $scope.calculateMagiciteRegular_JP_shopsale = function() {
+           return calc_magicite_tablet_JP_shopsale($scope.calculateRemainingTabletsRegular());
+        }
+        $scope.calculateMagiciteSupreme_JP_shopsale = function() {
+           return calc_magicite_tablet_JP_shopsale($scope.calculateRemainingTabletsSupreme());
+        }
+    }]);
 
-        return Math.round(2 * (3 * (Math.round(rCores / 40))) / 3);
+function calc_magicite_tablet_GL_normal(remainingTablets){
+    return Math.min((Math.ceil(remainingTablets/12)*1000, Math.floor(remainingTablets/12)*1000 + Math.ceil((remainingTablets%12)/3)*300));
+}
 
+function calc_magicite_tablet_JP_normal(remainingTablets){
+    return Math.ceil(remainingTablets/9) *1000;
+}
+
+function calc_magicite_tablet_JP_shopsale(remainingTablets){
+    return Math.min((Math.ceil(remainingTablets/50) * 4000, Math.floor(remainingTablets/50) * 4000 + Math.ceil( (remainingTablets%50) / 9 ) * 800));
+}
+
+function calc_magicite_tablet_GL_shopsale(remainingTablets){
+    return Math.min((Math.ceil(remainingTablets/12)*800, Math.floor(remainingTablets/12)*800 + Math.ceil((remainingTablets%12)/3)*240));
+}
+
+
+
+function bsearch_core(fn, target, tabletsOwned) {
+    var l = 0, r = 512;
+    while (l < r) {
+        var mid = Math.floor((l + r) / 2);
+        if (fn(mid, tabletsOwned) < target) {
+            l = mid + 1;
+        } else {
+            r = mid;
+        }
     }
-    $scope.calculateRemainingDaysSupreme = function() {
+    return l;
+}
 
-        return Math.round(2 * (3 * (Math.round(sCores / 40))) / 3);
+// global var 
+var shopsaleGilPass = [0];
+var currentday = 0;
+(function initglobalvar() {
+    var dayInMonth = [31,28,31,30,31,30,31,31,30,31,30,31]
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth(); //January is 0!
+    var yyyy = today.getFullYear();
+
+    // check leap year
+    if (((yyyy % 4 == 0) && (yyyy % 100 != 0)) || (yyyy % 400 == 0)) {
+        dayInMonth[1] = 29;
     }
-    //Functions of remaining days including tablets
-    $scope.calculateRemainingDaysRegular_weeklytabs = function() {
 
-        return Math.round(14 * (3 * (Math.round(rCores / 40))) / 27);
-
+    var acc = 0;
+    for (var m = 0; m < 12; m++) {
+        for (var d = 0; d < dayInMonth[m]; d++) {
+            if (d >= dayInMonth[m] - 8) {
+                acc += 2;
+            }        
+            shopsaleGilPass.push(acc);
+        }
     }
-    $scope.calculateRemainingDaysSupreme_weeklytabs = function() {
 
-        return Math.round(14 * (3 * (Math.round(sCores / 40))) / 27);
+    currentday = dd;
+    for (var i = 0; i < mm; i++) {
+        currentday += dayInMonth[i];
     }
-}]);
+})();
+
+function gilpassFromShopsale(d) {
+    var len = shopsaleGilPass.length;
+    return shopsaleGilPass[(currentday + d) % len] - shopsaleGilPass[currentday] + 
+        (currentday + d >= len ? shopsaleGilPass[len-1] : 0);
+}
+
+function coresPerDay(d, tabletsOwned) {
+    var tablets = tabletsOwned + d + 3*Math.floor(d/6);
+    var tabletsLeftOver = tablets % 3;
+    var gilPass = d;
+    return (tablets - tabletsLeftOver) / 3 * 40 + gilPass * 22 + (tabletsLeftOver == 1 ? 10 : tabletsLeftOver * 11);
+}
+
+function coresPerDayWeeklyTablets(d, tabletsOwned) {
+    var tablets = tabletsOwned + d + 3*Math.floor(d/6) + 3*Math.floor(d/7);
+    var tabletsLeftOver = tablets % 3;
+    var gilPass = d;
+    return (tablets - tabletsLeftOver) / 3 * 40 + gilPass * 22 + (tabletsLeftOver == 1 ? 10 : tabletsLeftOver * 11);
+}
+
+function coresPerDayWeeklyTabletsJP(d, tabletsOwned) {
+    var tablets = tabletsOwned + d + 3*Math.floor(d/6) + 3*Math.floor(d/7);
+    var tabletsLeftOver = tablets % 3;
+    var gilPass = d + gilpassFromShopsale(d);
+    return (tablets - tabletsLeftOver) / 3 * 40 + gilPass * 22 + (tabletsLeftOver == 1 ? 10 : tabletsLeftOver * 11);
+}
+
 </script>
 
 </html>
