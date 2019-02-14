@@ -440,6 +440,7 @@ app.controller('CoreCalcCtrl', ['$scope', function($scope) {
         $scope.dv_tablets_txt = 0;
         $scope.dv_gilg_pass_txt = 0;
         $scope.dv_rainbow_keys_txt = 0;
+<<<<<<< HEAD
 
         $scope.calculateMaxCores = function(dv_core_farmed_txt, dv_tablets_txt, dv_gilg_pass_txt, dv_rainbow_keys_txt) {
             maxCores = (dv_core_farmed_txt) + (40 * Math.floor(dv_tablets_txt / 3)) + (dv_gilg_pass_txt * 22) + (dv_rainbow_keys_txt * 100)
@@ -553,6 +554,69 @@ function calc_magicite_tablet_GL_shopsale(remainingTablets){
 
 
 
+=======
+
+        $scope.calculateMaxCores = function(dv_core_farmed_txt, dv_tablets_txt, dv_gilg_pass_txt, dv_rainbow_keys_txt) {
+            maxCores = (dv_core_farmed_txt) + (40 * Math.floor(dv_tablets_txt / 3)) + (dv_gilg_pass_txt * 22) + (dv_rainbow_keys_txt * 100)
+            $scope.dv_max_core_farm_txt = maxCores; /*<------------------------must define as scope variable*/
+            return maxCores;
+        };
+        //Functions of remaining cores
+        $scope.calculateRemainingCoresRegular = function(dv_max_core_farm_txt) {
+            rCores = 7500 - dv_max_core_farm_txt;
+            $scope.remaining_regular_core_number = rCores;
+            return rCores;
+        }
+        $scope.calculateRemainingCoresSupreme = function(dv_max_core_farm_txt) {
+            sCores = 20000 - dv_max_core_farm_txt;
+            $scope.remaining_supreme_core_number = sCores;
+            return sCores;
+        }
+        //Functions of remaining tablets
+        $scope.calculateRemainingTabletsRegular = function() {
+            var tablets = 3 * Math.floor(rCores / 40);
+            var coresNeeded = rCores % 40;
+            var corrections = 0;
+            if (coresNeeded >= 23) {
+                corrections = 3;
+            } else if (coresNeeded >= 11) {
+                corrections = 2;
+            } else if (coresNeeded >= 1) {
+                corrections = 1;
+            }
+            return tablets + corrections;
+        }
+        $scope.calculateRemainingTabletsSupreme = function() {
+            var tablets = 3 * Math.floor(sCores / 40);
+            var coresNeeded = sCores % 40;
+            var corrections = 0;
+            if (coresNeeded >= 23) {
+                corrections = 3;
+            } else if (coresNeeded >= 11) {
+                corrections = 2;
+            } else if (coresNeeded >= 1) {
+                corrections = 1;
+            }
+            return tablets + corrections;
+        }
+        //Functions of remaining days
+        $scope.calculateRemainingDaysRegular = function() {
+            return bsearch_core(coresPerDay, rCores, $scope.dv_tablets_txt % 3);
+        }
+        $scope.calculateRemainingDaysSupreme = function() {
+            return bsearch_core(coresPerDay, sCores, $scope.dv_tablets_txt % 3);
+        }
+        //Functions of remaining days including tablets
+        $scope.calculateRemainingDaysRegular_weeklytabs = function() {
+            return bsearch_core(coresPerDayWeeklyTablets, rCores, $scope.dv_tablets_txt % 3);
+        }
+        $scope.calculateRemainingDaysSupreme_weeklytabs = function() {
+            return bsearch_core(coresPerDayWeeklyTablets, sCores, $scope.dv_tablets_txt % 3);
+        }
+    }]);
+
+
+>>>>>>> origin/master
 function bsearch_core(fn, target, tabletsOwned) {
     var l = 0, r = 512;
     while (l < r) {
@@ -565,6 +629,7 @@ function bsearch_core(fn, target, tabletsOwned) {
     }
     return l;
 }
+<<<<<<< HEAD
 
 // global var 
 var shopsaleGilPass = [0];
@@ -624,6 +689,23 @@ function coresPerDayWeeklyTabletsJP(d, tabletsOwned) {
     return (tablets - tabletsLeftOver) / 3 * 40 + gilPass * 22 + (tabletsLeftOver == 1 ? 10 : tabletsLeftOver * 11);
 }
 
+=======
+
+function coresPerDay(d, tabletsOwned) {
+    var tablets = tabletsOwned + d + 3*Math.floor(d/6);
+    var tabletsLeftOver = tablets % 3;
+    var gilPass = d;
+    return (tablets - tabletsLeftOver) / 3 * 40 + gilPass * 22 + (tabletsLeftOver == 1 ? 10 : tabletsLeftOver * 11);
+}
+
+function coresPerDayWeeklyTablets(d, tabletsOwned) {
+    var tablets = tabletsOwned + d + 3*Math.floor(d/6) + 3*Math.floor(d/7);
+    var tabletsLeftOver = tablets % 3;
+    var gilPass = d;
+    return (tablets - tabletsLeftOver) / 3 * 40 + gilPass * 22 + (tabletsLeftOver == 1 ? 10 : tabletsLeftOver * 11);
+}
+
+>>>>>>> origin/master
 </script>
 
 </html>
