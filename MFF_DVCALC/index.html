@@ -377,7 +377,7 @@ var translationEN = {
         DAY_UNIT:'days',
         ASSUMPTION_TXT:'Assumption: Pass Shop Sale is assumed for 8 days monthly (daily 3 passes);',
         DISCLAIMER_TXT:'Disclaimer: This calculator will only provide us an approximate/estimation value of results to be closest as possible. Please take this app as a grain of salts.',
-        CREDIT_TEXT:'Built with love by {{owner}} and helpful contributors from {{reddit}}.'
+        CREDIT_TEXT:'Built with love by {{owner}}, {{team}} and helpful contributors from {{reddit}}.'
     };
 var translationJP = {
         BTN_EN:'英語',
@@ -410,11 +410,11 @@ var translationJP = {
         JP_TAG:'日本',
         REMAINING_MAGICITE_MODE_GL_NORMAL:'合計魔石数 (12枚石板 : 1000魔石)',
         REMAINING_MAGICITE_MODE_JP_NORMAL:'合計魔石数 (9枚石板 : 1000魔石)',
-        REMAINING_MAGICITE_MODE_JP_SHOPSALE:'合計魔石数 (50枚石板 : 4000魔石, 9枚石板 : 800魔石)',
+        REMAINING_MAGICITE_MODE_JP_SHOPSALE:'合計魔石数 (50枚石板 : 4000魔石、 9枚石板 : 800魔石)',
         DAY_UNIT:'日',
         ASSUMPTION_TXT:'推定: パスセールは8日間毎月推定(毎日3枚);',
         DISCLAIMER_TXT:'免責事項：この計算機は、可能な限り近い結果の概算値または推定値を提供します。',
-        CREDIT_TEXT:'これは {{owner}} と他の{{reddit}}の貢献者による情熱をもって開発されました。'
+        CREDIT_TEXT:'これは {{owner}}、{{team}} と他の{{reddit}}の貢献者による情熱をもって開発されました。'
     };
 var app = angular.module('mtabletCalc', ['pascalprecht.translate','ngSanitize']);
 app.config(function($translateProvider) {
@@ -430,7 +430,8 @@ app.controller('translateCtrl', function($scope, $translate) {
         $scope.language_used = key;
     };
     $scope.options = { 
-    owner: '<a href="https://reddit.com/u/wf3456" target="_blank">/u/wf3456</a>',
+    owner: '<a href="https://twitter.com/wfang3456" target="_blank">wfang3456</a>',
+    team:'<a href="https://twitter.com/whit3z_mff" target="_blank">Whit3z</a>',
     reddit:'<a href="https://www.reddit.com/r/MobiusFF" target="_blank">Reddit MFF</a>'
   };
 });
