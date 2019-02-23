@@ -284,7 +284,7 @@ font-size:12pt;
                             </td>
                         </tr>
                         <tr>
-                            <td><span class="gl_tag" translate="GL_TAG">GL</span><b translate="REMAINING_MAGICITE_MODE_GL_NORMAL">Estimated Magicite Needed - Normal (12 tablets : 1000 magicites) </b></td>
+                            <td><span class="gl_tag" translate="GL_TAG">GL</span><b translate="REMAINING_MAGICITE_MODE_GL_NORMAL">Estimated Magicite Needed - Normal (12 tablets : 1000 magicites, 3 tablets : 300 magicites) </b></td>
                             <td>
                                 <p ng-show="calculateMagiciteRegular_GL() >0">
                                    {{calculateMagiciteRegular_GL()}}<img class="magicite_icon" src="img/magicite.png"> 
@@ -299,7 +299,7 @@ font-size:12pt;
                             </td>
                         </tr>
                         <tr>
-                            <td><span class="gl_tag" translate="GL_TAG">GL</span><b translate="REMAINING_MAGICITE_MODE_GL_SHOPSALE">Estimated Magicite Needed - Shop Sale (50 tablets : 4000 magicites, 9 tablets : 800 magicites)</b></td>
+                            <td><span class="gl_tag" translate="GL_TAG">GL</span><b translate="REMAINING_MAGICITE_MODE_GL_SHOPSALE">Estimated Magicite Needed - Shop Sale (50 tablets : 3200 magicites, 12 tablets : 800 magicites, 3 tablets : 240 magicites)</b></td>
                             <td>
                                 <p ng-show="calculateMagiciteRegular_GL_shopsale() >0">
                                    {{calculateMagiciteRegular_GL_shopsale()}}<img class="magicite_icon" src="img/magicite.png"> 
@@ -387,9 +387,9 @@ var translationEN = {
         ESTIMATED_DAYS_PASS_SALE:'Estimated Number of Days to Obtain Card (included monthly Pass Shop Sale)',
         GL_TAG:'GL',
         JP_TAG:'JP',
-        REMAINING_MAGICITE_MODE_GL_NORMAL:'Estimated Magicite Needed - Normal (12 tablets : 1000 magicites)',
+        REMAINING_MAGICITE_MODE_GL_NORMAL:'Estimated Magicite Needed - Normal (12 tablets : 1000 magicites, 3 tablets : 300 magicites)',
         REMAINING_MAGICITE_MODE_JP_NORMAL:'Estimated Magicite Needed - Normal (9 tablets : 1000 magicites)',
-        REMAINING_MAGICITE_MODE_GL_SHOPSALE:'Estimated Magicite Needed - Shop Sale (50 tablets : 3200 magicites, 12 tablets : 800 magicites)',
+        REMAINING_MAGICITE_MODE_GL_SHOPSALE:'Estimated Magicite Needed - Shop Sale (50 tablets : 3200 magicites, 12 tablets : 800 magicites, 3 tablets : 240 magicites)',
         REMAINING_MAGICITE_MODE_JP_SHOPSALE:'Estimated Magicite Needed - Shop Sale (50 tablets : 4000 magicites, 9 tablets : 800 magicites)',
         DAY_UNIT:'days',
         ASSUMPTION_TXT:'Assumption: Pass Shop Sale is assumed for 8 days monthly (daily 3 passes);',
@@ -425,9 +425,9 @@ var translationJP = {
         ESTIMATED_DAYS_PASS_SALE:'推定カード取得日数 (月額パスセールを含む)',
         GL_TAG:'海外',
         JP_TAG:'日本',
-        REMAINING_MAGICITE_MODE_GL_NORMAL:'合計魔石数 (12枚石板 : 1000魔石)',
+        REMAINING_MAGICITE_MODE_GL_NORMAL:'合計魔石数 (12枚石板 : 1000魔石, 3枚石板 : 300魔石)',
         REMAINING_MAGICITE_MODE_JP_NORMAL:'合計魔石数 (9枚石板 : 1000魔石)',
-        REMAINING_MAGICITE_MODE_GL_SHOPSALE:'合計魔石数 (50枚石板 : 3200魔石、 12枚石板 : 800魔石)',
+        REMAINING_MAGICITE_MODE_GL_SHOPSALE:'合計魔石数 (50枚石板 : 3200魔石、 12枚石板 : 800魔石, 3枚石板 : 240魔石)',
         REMAINING_MAGICITE_MODE_JP_SHOPSALE:'合計魔石数 (50枚石板 : 4000魔石、 9枚石板 : 800魔石)',
         DAY_UNIT:'日',
         ASSUMPTION_TXT:'推定: パスセールは8日間毎月推定(毎日3枚);',
