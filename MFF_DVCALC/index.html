@@ -299,6 +299,21 @@ font-size:12pt;
                             </td>
                         </tr>
                         <tr>
+                            <td><span class="gl_tag" translate="GL_TAG">GL</span><b translate="REMAINING_MAGICITE_MODE_GL_SHOPSALE">Estimated Magicite Needed - Shop Sale (50 tablets : 4000 magicites, 9 tablets : 800 magicites)</b></td>
+                            <td>
+                                <p ng-show="calculateMagiciteRegular_GL_shopsale() >0">
+                                   {{calculateMagiciteRegular_GL_shopsale()}}<img class="magicite_icon" src="img/magicite.png"> 
+                                </p>
+                                <p ng-show="calculateMagiciteRegular_GL_shopsale() <= 0">0</p>
+                            </td>
+                            <td>
+                                <p ng-show="calculateMagiciteSupreme_GL_shopsale() >0">
+                                    {{calculateMagiciteSupreme_GL_shopsale()}} <img class="magicite_icon" src="img/magicite.png"> 
+                                </p>
+                                <p ng-show="calculateMagiciteSupreme_GL_shopsale() <= 0">0</p>
+                            </td>
+                        </tr>
+                        <tr>
                             <td><span class="jp_tag" translate="JP_TAG">JP</span><b translate="REMAINING_MAGICITE_MODE_JP_NORMAL">Estimated Magicite Needed - Normal (9 tablets : 1000 magicites) </b></td>
                             <td>
                                 <p ng-show="calculateMagiciteRegular_JP() >0">
@@ -328,6 +343,7 @@ font-size:12pt;
                                 <p ng-show="calculateMagiciteSupreme_JP_shopsale() <= 0">0</p>
                             </td>
                         </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -373,6 +389,7 @@ var translationEN = {
         JP_TAG:'JP',
         REMAINING_MAGICITE_MODE_GL_NORMAL:'Estimated Magicite Needed - Normal (12 tablets : 1000 magicites)',
         REMAINING_MAGICITE_MODE_JP_NORMAL:'Estimated Magicite Needed - Normal (9 tablets : 1000 magicites)',
+        REMAINING_MAGICITE_MODE_GL_SHOPSALE:'Estimated Magicite Needed - Shop Sale (50 tablets : 3200 magicites, 12 tablets : 800 magicites)',
         REMAINING_MAGICITE_MODE_JP_SHOPSALE:'Estimated Magicite Needed - Shop Sale (50 tablets : 4000 magicites, 9 tablets : 800 magicites)',
         DAY_UNIT:'days',
         ASSUMPTION_TXT:'Assumption: Pass Shop Sale is assumed for 8 days monthly (daily 3 passes);',
@@ -410,6 +427,7 @@ var translationJP = {
         JP_TAG:'日本',
         REMAINING_MAGICITE_MODE_GL_NORMAL:'合計魔石数 (12枚石板 : 1000魔石)',
         REMAINING_MAGICITE_MODE_JP_NORMAL:'合計魔石数 (9枚石板 : 1000魔石)',
+        REMAINING_MAGICITE_MODE_GL_SHOPSALE:'合計魔石数 (50枚石板 : 3200魔石、 12枚石板 : 800魔石)',
         REMAINING_MAGICITE_MODE_JP_SHOPSALE:'合計魔石数 (50枚石板 : 4000魔石、 9枚石板 : 800魔石)',
         DAY_UNIT:'日',
         ASSUMPTION_TXT:'推定: パスセールは8日間毎月推定(毎日3枚);',
@@ -549,7 +567,7 @@ function calc_magicite_tablet_JP_shopsale(remainingTablets){
 }
 
 function calc_magicite_tablet_GL_shopsale(remainingTablets){
-    return Math.min((Math.ceil(remainingTablets/12)*800, Math.floor(remainingTablets/12)*800 + Math.ceil((remainingTablets%12)/3)*240));
+    return Math.min(Math.ceil(remainingTablets/50)*3200, Math.min(Math.floor(remainingTablets/50)*3200 + Math.ceil((remainingTablets%50)/12) *1000,Math.floor(remainingTablets/50)*3200 + Math.floor((remainingTablets%50)/12)*800 + Math.ceil(((remainingTablets%50)%12)/3) * 240));
 }
 
 
