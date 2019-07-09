@@ -508,7 +508,7 @@ app.controller('CoreCalcCtrl', ['$scope', function($scope) {
     }
 
     $scope.calculateElixirsRegular_Normal = function(pande_player_max_stam, pande_target_magicite_number, calculateMagBonus) {
-        var totalElixirsHardRegularNormal = (60 * pande_target_magicite_number / (30 + calculateMagBonus)) / pande_player_max_stam;
+        var totalElixirsHardRegularNormal = (60 * pande_target_magicite_number / (25 + calculateMagBonus)) / pande_player_max_stam;
         $scope.pande_elixirs_regular_normal = totalElixirsHardRegularNormal;
         return Math.ceil(totalElixirsHardRegularNormal);
     }
