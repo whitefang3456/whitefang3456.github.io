@@ -252,7 +252,7 @@ table>tbody>tr>td>h4 {
                 <label translate="TOTAL_MAGICITE_BONUS_NORMAL">Total Magicite Bonus (NORMAL mode):</label>
             </div>
             <div class="col-xs-4 col-sm-2 vcenter">
-                <h4 name="dv_max_core_farm_txt" ng-model="dv_max_core_farm_txt" placeholder="0">25 + <span  ng-model="magBonus">{{calculateMagBonus()}}</span>&nbsp;</h4>
+                <h4 name="pande_magicites_bonus_hard_normal" ng-model="pande_magicites_bonus_hard_normal" placeholder="0">25 + <span  ng-model="magBonus">{{calculateMagBonus()}}</span>&nbsp;</h4>
             </div>
         </div>
         <div class="row">
@@ -304,7 +304,7 @@ table>tbody>tr>td>h4 {
                 <label translate="TOTAL_MAGICITE_BONUS_NORMAL_2">Total Magicite Bonus (NORMAL mode):</label>
             </div>
             <div class="col-xs-4 col-sm-2 vcenter">
-                <h4 name="dv_max_core_farm_txt" ng-model="dv_max_core_farm_txt" placeholder="0">15 + <span  ng-model="magBonus">{{calculateMagBonus()}}</span>&nbsp;</h4>
+                <h4 name="pande_magicites_bonus_normal" ng-model="pande_magicites_bonus_normal" placeholder="0">15 + <span  ng-model="magBonus">{{calculateMagBonus()}}</span>&nbsp;</h4>
             </div>
         </div>
         <div class="row">
@@ -368,14 +368,14 @@ var translationEN = {
     INFO_NOTE: 'To close this, please kindly untick the checkbox',
     PRE_TEXT: 'Before we begin, please kindly insert the inputs',
     PLAYER_STAMINA_LABEL: 'Player MAX Stamina',
-    TARGET_MAGICITE_NUMBER_LABEL: 'Target Magicites to be farmed (20,000 MAX)',
+    TARGET_MAGICITE_NUMBER_LABEL: 'Target Magicites to be farmed',
     PANDE_BOSS_LABEL: 'Pandemonium I Bosses (tick if completed token rewards)',
     CHECKALL_BTN:'Check All',
     UNCHECKALL_BTN:'Uncheck All',
     PANDEMOB_1_1: 'Big Eye',
     PANDEMOB_1_2: 'Gigaworm',
     PANDEMOB_1_3: 'Fenrir',
-    PANDEMOB_1_4: 'Couerl',
+    PANDEMOB_1_4: 'Coeurl',
     PANDEMOB_1_5: 'Neslug',
     PANDEMOB_1_6: 'Ogre',
     PANDEMOB_1_7: 'Basilisk',
@@ -411,7 +411,7 @@ var translationJP = {
     INFO_NOTE: 'これを閉じるには、チェックボックスを解除してください。',
     PRE_TEXT: '始める前に、インプットを挿入してください。',
     PLAYER_STAMINA_LABEL: 'プレイヤーMAXスタミナ',
-    TARGET_MAGICITE_NUMBER_LABEL: '掘る魔石の数（20,000 MAX）',
+    TARGET_MAGICITE_NUMBER_LABEL: '掘る魔石の数',
     PANDE_BOSS_LABEL: 'パンデIボス（トークンの報酬が完了したらチェックしてください）',
     CHECKALL_BTN:'全部チェック',
     UNCHECKALL_BTN:'全部リセット',
@@ -464,7 +464,7 @@ app.controller('CoreCalcCtrl', ['$scope', function($scope) {
     var rCores, sCores, maxCores, magBonus;
     $scope.magBonus = 0;
     $scope.pande_magicites_bonus = 0;
-    $scope.pande_player_max_stam = 90;
+    $scope.pande_player_max_stam = 180;
     $scope.pandeElixirsRegular = 0;
     $scope.pandeElixirsRegular_2 = 0;
     $scope.pande_target_magicite_number = 20000;
