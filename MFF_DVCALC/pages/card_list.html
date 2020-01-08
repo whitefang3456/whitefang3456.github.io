@@ -1,0 +1,91 @@
+<div class="text-right">
+    <button class="btn btn-danger"
+        ng-click="$parent.toggleCardList = false; $parent.showRecommendationList=true; $parent.showCardList=false; this.video.pauseVideo();">ⓧ
+        <span translate="CLOSE_BTN">Close</span></button>
+</div>
+<ul class="nav nav-tabs">
+    <li ng-class="{active:$parent.showRecommendationList == true}"><a href="javascript:void(0)"
+            ng-click="$parent.showRecommendationList = true; $parent.showCardList = false"><b
+                translate="RECOM_TITLE">Recommended</b></a></li>
+    <li ng-class="{active:$parent.showCardList == true}"><a href="javascript:void(0)"
+            ng-click="$parent.showCardList = true; $parent.showRecommendationList = false"><b
+                translate=" CARDLIST_TITLE">Card
+                List</b></a></li>
+</ul><br>
+<div ng-cloak ng-show="showRecommendationList==true">
+    <h4><span translate="RECOM_HEADING">Recommended Cards</span><sup>Ninja Oscillator</sup></h4>
+    <div class="ninja_videobg">
+        <div class="embed-responsive embed-responsive-16by9">
+            <youtube-video video-id="youtubeRecomURL" player="video"></youtube-video>
+        <button class="btn btn-primary" ng-click="youtubeRecomURL = 'QbEVGR2vBUY';" ng-hide="youtubeRecomURL != ''">&#9654; <span translate="VIDEO_PLAY_BTN">PLAY VIDEO</span></button>
+        </div>
+        
+    </div>
+    <p translate="RECOM_NOTE">Note: This Recommendation video is accustomed to Japanese Version MobiusFF</p>
+    <hr>
+    <!-- Table RECOM / OSUSUME -->
+    <table class="table-bordered table-striped table" ng-controller="recomCtrl">
+        <thead>
+            <th >#</th>
+            <th translate="RECOM_CARD_NAME">Card Name</th>
+            <th translate="RECOM_CARD_REASON">Reason/s</th>
+            <th translate="RECOM_CARD_VIDEO_TIMING">Video Reference Timing</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="recom_card in recom_cards">
+                <td>{{recom_card.number}}</td>
+                <td>{{recom_card.name}}</td>
+                <td>{{recom_card.reasons}}</td>
+                <td><button ng-click="video.seekTo(recom_card.video_timing_secs)" class="btn btn-primary">{{recom_card.video_timing}}</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- CARD LIST REVIEW & RATING -->
+<div ng-cloak ng-show="showCardList == true">
+    <div class="row" ng-controller="extBossCtrl">
+
+        <div class="col-xs-12 overflow-auto">
+            <h4><span translate="CARDLIST_HEADING">Card List Review & Rating</span><sup>ff12NLBLLGler1,wfang3456</sup></h4>
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th translate="TAB_CARD_VER" rowspan="2">Card (ver.)</th>
+                        <th>ATK/BRK</th>
+                        <th translate="TAB_RATING">Rating</th>
+                    </tr>
+                    <tr>
+                        <th translate="TAB_PROS">Pros</th>
+
+                        <th translate="TAB_CONS">Cons</th>
+                    </tr>
+                </thead>
+
+                <tbody ng-repeat="boss in bosses">
+                    
+                    <tr>
+                        <td rowspan="2"><img class="rift_img" lazy-load tempData="{{boss.img_url}}" alt="{{boss.name}}">
+                            <p><b>{{boss.name}}</b> (ver. {{boss.reflection_UC}})</p>
+                        </td>
+                        <td>{{boss.atk_brk_stats}}</td>
+                        <td
+                            ng-class="{'success':{{boss.rating}} >= 4, 'info':{{boss.rating}} >= 3 && {{boss.rating}} <=3.5, 'danger':{{boss.rating}} < 3}">
+                            <h5>{{boss.rating}} / 5</h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{boss.pros}}
+                        </td>
+                        <td>{{boss.cons}}</td>
+                    </tr>
+              
+                </tbody>
+            </table>
+            <sup translate="DISCLAIMER_RATING">The reviews and ratings are done fairly among DV cards comparison instead with newer generation of DLB2
+                cards.</sup>
+        </div>
+    </div>
+</div>
+</div>

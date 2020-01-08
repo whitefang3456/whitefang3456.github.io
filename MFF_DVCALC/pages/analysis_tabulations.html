@@ -1,0 +1,161 @@
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table analysis-table">
+            <thead>
+                <th translate="CARD_LABEL">Card-to-get</th>
+                <th translate="REGULAR_5_STAR">Regular 5&#x2605; Extreme Sic Card</th>
+                <th id="supreme" translate="SUPREME_5_STAR">Supreme 5&#x2605; Extreme X Sic Card</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b translate="REMAINING_CORE">Remaining Cores Needed</b></td>
+                    <td>
+                        <p ng-class="{'text-success':remaining_regular_core_number <= 0,'text-danger':remaining_regular_core_number > 0}"
+                            name="remaining_regular_core_number" ng-model="remaining_regular_core_number">
+                            {{calculateRemainingCoresRegular(dv_max_core_farm_txt)}}</p>
+                    </td>
+                    <td>
+                        <p ng-class="{'text-success':remaining_supreme_core_number <= 0,'text-danger':remaining_supreme_core_number > 0}"
+                            name="remaining_supreme_core_number" ng-model="remaining_supreme_core_number">
+                            {{calculateRemainingCoresSupreme(dv_max_core_farm_txt)}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b translate="REMAINING_TABLET">Remaining Tablets Needed</b></td>
+                    <td>
+                        <p ng-show="calculateRemainingTabletsRegular() > 0">
+                            {{calculateRemainingTabletsRegular()}}</p>
+                        <p ng-show="calculateRemainingTabletsRegular() <= 0">0</p>
+                    </td>
+                    <td>
+                        <p ng-show="calculateRemainingTabletsSupreme() > 0">
+                            {{calculateRemainingTabletsSupreme()}}</p>
+                        <p ng-show="calculateRemainingTabletsSupreme() <= 0">0</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b translate="ESTIMATED_DAYS">Estimated Number of Days to Obtain Card (included daily pass)</b>
+                    </td>
+                    <td>
+                        <h4 ng-show="calculateRemainingDaysRegular() > 0">
+                            {{calculateRemainingDaysRegular()}}&nbsp;<span translate="DAY_UNIT">days</span></h4>
+                        <h4 ng-show="calculateRemainingDaysRegular() <= 0">0</h4>
+                    </td>
+                    <td>
+                        <h4 ng-show="calculateRemainingDaysSupreme() > 0">
+                            {{calculateRemainingDaysSupreme()}}&nbsp;<span translate="DAY_UNIT">days</span></h4>
+                        <h4 ng-show="calculateRemainingDaysSupreme() <= 0">0</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b translate="ESTIMATED_DAYS_WEEKLY_GIL">Estimated Number of Days to Obtain Card (included
+                            weekly gil tablets x3)</b></td>
+                    <td>
+                        <h4 ng-show="calculateRemainingDaysRegular_weeklytabs() > 0">
+                            {{calculateRemainingDaysRegular_weeklytabs()}}&nbsp;<span translate="DAY_UNIT">days</span>
+                        </h4>
+                        <h4 ng-show="calculateRemainingDaysRegular_weeklytabs() <= 0">0</h4>
+                    </td>
+                    <td>
+                        <h4 ng-show="calculateRemainingDaysSupreme_weeklytabs() > 0">
+                            {{calculateRemainingDaysSupreme_weeklytabs()}}&nbsp;<span translate="DAY_UNIT">days</span>
+                        </h4>
+                        <h4 ng-show="calculateRemainingDaysSupreme_weeklytabs() <= 0">0</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b translate="ESTIMATED_DAYS_PASS_SALE">Estimated Number of Days to Obtain Card (included
+                            monthly pass sale)</b></td>
+                    <td>
+                        <h4 ng-show="calculateRemainingDaysRegular_weeklytabs() > 0">
+                            {{calculateRemainingDaysRegular_weeklytabs_shopsale()}}&nbsp;<span
+                                translate="DAY_UNIT">days</span></h4>
+                        <h4 ng-show="calculateRemainingDaysRegular_weeklytabs() <= 0">0</h4>
+                    </td>
+                    <td>
+                        <h4 ng-show="calculateRemainingDaysSupreme_weeklytabs() > 0">
+                            {{calculateRemainingDaysSupreme_weeklytabs_shopsale()}}&nbsp;<span
+                                translate="DAY_UNIT">days</span></h4>
+                        <h4 ng-show="calculateRemainingDaysSupreme_weeklytabs() <= 0">0</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="gl_tag" translate="GL_TAG">GL</span><b
+                            translate="REMAINING_MAGICITE_MODE_GL_NORMAL">Estimated Magicite Needed - Normal (12 tablets
+                            : 1000 magicites, 3 tablets : 300 magicites) </b></td>
+                    <td>
+                        <p ng-show="calculateMagiciteRegular_GL() >0">
+                            {{calculateMagiciteRegular_GL()}}<img class="magicite_icon" alt="magicite_icon" src="img/magicite.png">
+                        </p>
+                        <p ng-show="calculateMagiciteRegular_GL() <= 0">0</p>
+                    </td>
+                    <td>
+                        <p ng-show="calculateMagiciteSupreme_GL() >0">
+                            {{calculateMagiciteSupreme_GL()}} <img class="magicite_icon" alt="magicite_icon" src="img/magicite.png">
+                        </p>
+                        <p ng-show="calculateMagiciteSupreme_GL() <= 0">0</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="gl_tag" translate="GL_TAG">GL</span><b
+                            translate="REMAINING_MAGICITE_MODE_GL_SHOPSALE">Estimated Magicite Needed - Shop Sale (50
+                            tablets : 3200 magicites, 12 tablets : 800 magicites, 3 tablets : 240 magicites)</b></td>
+                    <td>
+                        <p ng-show="calculateMagiciteRegular_GL_shopsale() >0">
+                            {{calculateMagiciteRegular_GL_shopsale()}}<img class="magicite_icon" alt="magicite_icon"  src="img/magicite.png">
+                        </p>
+                        <p ng-show="calculateMagiciteRegular_GL_shopsale() <= 0">0</p>
+                    </td>
+                    <td>
+                        <p ng-show="calculateMagiciteSupreme_GL_shopsale() >0">
+                            {{calculateMagiciteSupreme_GL_shopsale()}} <img class="magicite_icon"
+                            alt="magicite_icon" src="img/magicite.png">
+                        </p>
+                        <p ng-show="calculateMagiciteSupreme_GL_shopsale() <= 0">0</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="jp_tag" translate="JP_TAG">JP</span><b
+                            translate="REMAINING_MAGICITE_MODE_JP_NORMAL">Estimated Magicite Needed - Normal (9 tablets
+                            : 1000 magicites) </b></td>
+                    <td>
+                        <p ng-show="calculateMagiciteRegular_JP() >0">
+                            {{calculateMagiciteRegular_JP()}}<img class="magicite_icon" alt="magicite_icon"  src="img/magicite.png">
+                        </p>
+                        <p ng-show="calculateMagiciteRegular_JP() <= 0">0</p>
+                    </td>
+                    <td>
+                        <p ng-show="calculateMagiciteSupreme_JP() >0">
+                            {{calculateMagiciteSupreme_JP()}} <img class="magicite_icon" alt="magicite_icon"  src="img/magicite.png">
+                        </p>
+                        <p ng-show="calculateMagiciteSupreme_JP() <= 0">0</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="jp_tag" translate="JP_TAG">JP</span><b
+                            translate="REMAINING_MAGICITE_MODE_JP_SHOPSALE">Estimated Magicite Needed - Shop Sale (50
+                            tablets : 4000 magicites, 9 tablets : 800 magicites)</b></td>
+                    <td>
+                        <p ng-show="calculateMagiciteRegular_JP_shopsale() >0">
+                            {{calculateMagiciteRegular_JP_shopsale()}}<img class="magicite_icon" alt="magicite_icon"  src="img/magicite.png">
+                        </p>
+                        <p ng-show="calculateMagiciteRegular_JP_shopsale() <= 0">0</p>
+                    </td>
+                    <td>
+                        <p ng-show="calculateMagiciteSupreme_JP_shopsale() >0">
+                            {{calculateMagiciteSupreme_JP_shopsale()}} <img class="magicite_icon"
+                            alt="magicite_icon" src="img/magicite.png">
+                        </p>
+                        <p ng-show="calculateMagiciteSupreme_JP_shopsale() <= 0">0</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-12">
+        <p><sup translate="ASSUMPTION_TXT">Assumption: Pass Shop Sale is assumed for 8 days monthly (daily 3
+                passes);</sup></p>
+        <p><i translate="DISCLAIMER_TXT">Disclaimer:This calculator will only provide us an approximate/estimation value
+                of results to be closest as possible. Please take this app as a grain of salts.</i>
+    </div>
+</div>

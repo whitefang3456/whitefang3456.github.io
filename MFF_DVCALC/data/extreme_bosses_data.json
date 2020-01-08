@@ -1,0 +1,222 @@
+{
+    "card_list_bosses_gl": [{
+            "img_url": "img/2977.jpg",
+            "name": "Extreme Ifrit X",
+            "reflection_UC":"Duncan:VI",
+            "atk_brk_stats": "5790 / 1200",
+            "pros": "Orb usage efficient, 21 multihits, Highest ATK power.",
+            "cons": "Single Target, Lacking Critical Rupture ES",
+            "rating": 4.5
+        },
+        {
+            "img_url": "img/2997.jpg",
+            "name": "Extreme Shiva X",
+            "reflection_UC":"Minwu:II",
+            "atk_brk_stats": "3600 / 3",
+            "pros": "Great Ravage/Zone Crush Modifier in 1vs1 situation, unguard which helps against certain MP bosses",
+            "cons": "Lesser multihits(8), Lack of Yellow Clearing capability",
+            "rating": 3.5
+        },
+        {
+            "img_url": "img/3210.jpg",
+            "name": "Extreme Odin X",
+            "reflection_UC":"Ragnarok:XIII",
+            "atk_brk_stats": "2700 / 3",
+            "pros": "10hits of Improved Critical 500%, Damage shines when crits, pairs well with high EE jobs like Mage to easily hit capped damage vs neutral targets",
+            "cons": "Lack of Yellow Clearing, needs high base crit stats or crit resist down debuff to shine",
+            "rating": 4.0
+        },
+        {
+            "img_url": "img/3209.jpg",
+            "name": "Extreme Hashmal X",
+            "reflection_UC":"Xezat:II",
+            "atk_brk_stats": "1980 / 3000",
+            "pros": "1000% Painful Break only when enemy is broken, High hit count for non Damage-Limit-Break II card with 16 hits, good yellow clear and break defense down",
+            "cons": "Only can do well if enemy is broken, Single-target range, very hard to use on current content ",
+            "rating": 2.0
+        },
+        {
+            "img_url": "img/3222.jpg",
+            "name": "Extreme Ultima X",
+            "reflection_UC":"Fusoya:IV",
+            "atk_brk_stats": "4050 / 1800",
+            "pros": "Light shift and EE bonus works well on jobs with high crit/weak multiplier and saves the slot for a force card making it easy to use, 3 orb cost",
+            "cons": "needs high amount of orbs to get max EE bonus, ",
+            "rating": 5
+        },
+        {
+            "img_url": "img/3385.jpg",
+            "name": "Extreme Anima X",
+            "reflection_UC":"Floral Fallal:X-2",
+            "atk_brk_stats": "3180 / 1800",
+            "pros": "high hit count vs single target, high EE bonus that is easy to achieve",
+            "cons": "lower hits vs multiple targets",
+            "rating": 4.5
+        },
+        {
+            "img_url": "img/3423.jpg",
+            "name": "Extreme Belias X",
+            "reflection_UC":"Unbreakable Bond:XV",
+            "atk_brk_stats": "4500 / 3",
+            "pros": "High hits and damage, self damage triggers steelguard and reckoning ",
+            "cons": "self damage, need high HP to maintain full damage, single target",
+            "rating": 4.0
+        },
+        {
+            "img_url": "img/3575.jpg",
+            "name": "Extreme Famfrit X",
+            "reflection_UC":"Yiazmat:XII",
+            "atk_brk_stats": "3630 / 1050",
+            "pros": "good for breaking, fast ult charge, EE multiplier",
+            "cons": "Low multihits, needs max ult gauge to get full EE (300 MAX%) bonus",
+            "rating": 3.5
+        },
+        {
+            "img_url": "img/3579.jpg",
+            "name": "Extreme Adrammelech X",
+            "reflection_UC":"Sin:X",
+            "atk_brk_stats": "2700 / 2400",
+            "pros": "ignores element resistance so it shines against bosses like Exodus or Buffalo and rarely vs Chaos MindFlayer if paired with earth enemies due to his omnidrive buff",
+            "cons": "no crit rupture, needs all 3 multipliers (weakness, improved critical, painful break) to do decent damage",
+            "rating": 2.5
+        },
+        {
+            "img_url": "img/3583.jpg",
+            "name": "Extreme Hecatoncheir X",
+            "reflection_UC":"Gilgamesh X",
+            "atk_brk_stats": "4260 / 1350",
+            "pros": "gets bonus from both brave and faith, easy to use, high damage, has yellow clear compared to Ragnarok FFXIII",
+            "cons": "not as good on jobs with low atk stat",
+            "rating": 4.5
+        },
+        {
+            "img_url": "img/3587.jpg",
+            "name": "Extreme Alexander X",
+            "reflection_UC":"Shadowlord:XI",
+            "atk_brk_stats": "2430 / 3",
+            "pros": "has Hex/Noroi debuff",
+            "cons": "takes a while to get a good damage increase, only good with high action count, ",
+            "rating": 3
+        },
+        {
+            "img_url": "img/3591.jpg",
+            "name": "Extreme Bahamut X",
+            "reflection_UC":"Braska Final Aeon:X",
+            "atk_brk_stats": "4860 / 960",
+            "pros": "ignores defense and crit defense, high damage and easy to use, great for unguard immune targets like extreme MP bosses or EW",
+            "cons": "low multihits",
+            "rating": 4.5
+        }
+    ],
+    "card_list_bosses_jp": [
+        {
+            "img_url": "img/2977.jpg",
+            "name": "真・極イフリート",
+            "reflection_UC":"ダンカン:VI",
+            "atk_brk_stats": "5790 / 1200",
+            "pros": "3つオーブ使いやすい、 多段数は高い(21)、 最高のATK",
+            "cons": "単体、「必殺の一撃」ESなし",
+            "rating": 4.5
+        },
+        {
+            "img_url": "img/2997.jpg",
+            "name": "真・極シヴァ",
+            "reflection_UC":"ミンウ:II",
+            "atk_brk_stats": "3600 / 3",
+            "pros": "1対1の場合、大きな「ゾーンクラッシュ」ダメージを与えることができます、 「ノーガード」は特定のボスに対して役立ちます",
+            "cons": "多段数は低い(8), BRKゲージを赤染できない",
+            "rating": 3.5
+        },
+        {
+            "img_url": "img/3210.jpg",
+            "name": "真・極オーディン",
+            "reflection_UC":"ラグナロク:XIII",
+            "atk_brk_stats": "2700 / 3",
+            "pros": "多段数は高い(10) + クリティカルダメージアップ500%、 クリティカ場合に重大ダメージ、 高い属性強化のジョブ(例えば:魔道師)とうまく組み合わせる",
+            "cons": "BRKゲージを赤染できない、 クリティカするために高いジョブスステータスそれともクリティカル耐性ダウン必要です",
+            "rating": 4.0
+        },
+        {
+            "img_url": "img/3209.jpg",
+            "name": "真・極ハシュマリム",
+            "reflection_UC":"ゼザ:V",
+            "atk_brk_stats": "1980 / 3000",
+            "pros": "BRKの場合にブレイクダメージアップ+1000%、 非ダメージ限界突破IIカードの場合は高い(16)、 高いブレイク性能そしてブレイク防御力ダウン",
+            "cons": "ブレイクの場合にダメージをもたらすだけ、 単体、 現在のコンテンツでは非常に使いにくい",
+            "rating": 2.0
+        },
+        {
+            "img_url": "img/3222.jpg",
+            "name": "真・極アルテマ",
+            "reflection_UC":"フースーヤ:IV",
+            "atk_brk_stats": "4050 / 1800",
+            "pros": "ライトシフト改そして属性強化ボーナスも高クリティカル/弱点ダメジョブでうまく機能します、フォースカードのデッキの空きが良い、3つオーブ使いやすい",
+            "cons": "最大で属性強化+400%となっており、エレメントが減るほど加算値が減っていきます",
+            "rating": 5
+        },
+        {
+            "img_url": "img/3385.jpg",
+            "name": "真・極アニマ",
+            "reflection_UC":"フロラフルル:X-2",
+            "atk_brk_stats": "3180 / 1800",
+            "pros": "敵が単体の場合は攻撃が全て集中するためHIT数が多い単体攻撃アビとして使用できます、 属性強化条件を満たしやすい",
+            "cons": "敵が多体の場合は攻撃が拡散するHIT数が低い",
+            "rating": 4.5
+        },
+        {
+            "img_url": "img/3423.jpg",
+            "name": "真・極ベリアス",
+            "reflection_UC":"王との絆:XV",
+            "atk_brk_stats": "4500 / 3",
+            "pros": "多段数とATKは高い、自傷はライズガードとリベンジバーンを活性化する",
+            "cons": "自傷、MAXダメージを維持するには高いHPが必要、単体",
+            "rating": 4.0
+        },
+        {
+            "img_url": "img/3575.jpg",
+            "name": "真・極ファムフリート",
+            "reflection_UC":"ヤズマット:XII",
+            "atk_brk_stats": "3630 / 1050",
+            "pros": "ブレイクに良い、 速必殺ゲージアップ、 属性強化",
+            "cons": "多段数が低い(8)、 最大な属性強化（300 MAX％）ボーナスを得るには完全必殺ゲージが必要",
+            "rating": 3.5
+        },
+        {
+            "img_url": "img/3579.jpg",
+            "name": "真・極アドラメレク",
+            "reflection_UC":"シン:X",
+            "atk_brk_stats": "2700 / 2400",
+            "pros": "RESISTされる敵(風属性)に対してもゲージを削る能力を100%発揮させることができ (特に: 戦神エクスデス/ バッファロー/ 全属性耐性アップでカオスマインドフレア",
+            "cons": "「必殺の一撃」ESなし、 良いダメージを与えるために3つ火力を出す条件(弱点、クリティカル、そしてブレイクダメージアップ)が必要です",
+            "rating": 2.5
+        },
+        {
+            "img_url": "img/3583.jpg",
+            "name": "真・極ヘカトンケイル",
+            "reflection_UC":"真ギルガメッシュ",
+            "atk_brk_stats": "4260 / 1350",
+            "pros": "フェイスとブレイブなバフによって強化されたボーナス、 使いやすい、 ダメージは高い、 ラグナロクと比較して赤いBRKゲージを染色できます",
+            "cons": "ATKステータスが低いジョブではうまく機能しません",
+            "rating": 4.5
+        },
+        {
+            "img_url": "img/3587.jpg",
+            "name": "真・極アレキサンダー",
+            "reflection_UC":"闇の王:XI",
+            "atk_brk_stats": "2430 / 3",
+            "pros": "呪いがあるデバフ",
+            "cons": "ダメージエスカレートの時間がかかる、行動回数が多い場合にのみ有効",
+            "rating": 3
+        },
+        {
+            "img_url": "img/3591.jpg",
+            "name": "真・極バハムート",
+            "reflection_UC":"ブラスカの究極召喚:X",
+            "atk_brk_stats": "4860 / 960",
+            "pros": "敵の防御とクリティカ耐性を無視、使いやすい、ダメージは高い、ゴリ押しできる",
+            "cons": "多段数は低い(8)",
+            "rating": 4.5
+        }
+    ]
+
+}

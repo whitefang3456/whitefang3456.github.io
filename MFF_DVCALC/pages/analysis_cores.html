@@ -1,0 +1,69 @@
+<p translate="PRE_TEXT">Before we begin, please kindly insert the inputs according to 1 kind of Extreme Sic</p>
+<div class="row">
+    <div class="col-xs-2 col-sm-1 vcenter">
+        <img src="img/dvcore_ico.png" alt="dvcore_icon" class="m-icon">
+    </div>
+    <div class="col-xs-5 col-sm-8 vcenter">
+        <label translate="CORE_NUMBER_LABEL" for="dv_core_farmed_txt">Number of cores farmed
+        </label>
+    </div>
+    <div class="col-xs-4 col-sm-2 vcenter">
+        <input type="number" class="form-control" id="dv_core_farmed_txt" ng-model="dv_core_farmed_txt"
+            placeholder="0">
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-xs-2 col-sm-1 vcenter">
+        <img src="img/mtablet_ico.png" alt="tablet_icon" class="m-icon">
+    </div>
+    <div class="col-xs-5 col-sm-8 vcenter">
+        <label translate="TABLET_NUMBER_LABEL" for="dv_tablets_txt">Number of Mystic Tablets (3 tablets : 40 cores)
+            <br> </label>
+    </div>
+    <div class="col-xs-4 col-sm-2 vcenter">
+        <input type="number" class="form-control" id="dv_tablets_txt" ng-model="dv_tablets_txt" placeholder="0">
+    </div>
+</div>
+<br>
+<!-- P3 -->
+<div class="row">
+    <div class="col-xs-2 col-sm-1 vcenter">
+        <img src="img/gregpass_ico.png" alt="greg_pass" class="m-icon">
+    </div>
+    <div class="col-xs-5 col-sm-8 vcenter">
+        <label translate="GILG_PASS_LABEL" for="dv_gilg_pass_txt">Number of Gilgamesh Pass (1 pass : 22 cores)
+        </label>
+    </div>
+    <div class="col-xs-4 col-sm-2 vcenter">
+        <input type="number" class="form-control" id="dv_gilg_pass_txt" ng-model="dv_gilg_pass_txt" placeholder="0">
+    </div>
+</div>
+<br>
+<!-- P4 -->
+<div class="row">
+    <div class="col-xs-2 col-sm-1 vcenter">
+        <img src="img/rainbowkey_ico.png" alt="rainbowkey_icon" class="m-icon">
+    </div>
+    <div class="col-xs-5 col-sm-8 vcenter">
+        <label translate="RAINBOW_KEY_LABEL" for="dv_rainbow_keys_txt">Number of Rainbow Keys (1 key : 100 cores)
+        </label>
+    </div>
+    <div class="col-xs-4 col-sm-2 vcenter">
+        <input type="number" class="form-control" id="dv_rainbow_keys_txt" ng-model="dv_rainbow_keys_txt"
+            placeholder="0">
+    </div>
+</div>
+<br>
+<hr>
+<!-- T1 -->
+<div class="row">
+    <div class="col-xs-7 col-sm-9 vcenter">
+        <label translate="TOTAL_CORE_FARMED" for="dv_max_core_farm_txt">Calculated Total Number of Cores farmed :</label>
+    </div>
+    <div class="col-xs-4 col-sm-2 vcenter">
+        <h4 name="dv_max_core_farm_txt" ng-model="dv_max_core_farm_txt" placeholder="0">
+            {{calculateMaxCores(dv_core_farmed_txt,dv_tablets_txt,dv_gilg_pass_txt,dv_rainbow_keys_txt)}}&nbsp;<span
+                translate="CORE_QUANTITY_LABEL">cores</span></h4>
+    </div>
+</div>

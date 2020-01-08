@@ -1,0 +1,76 @@
+{
+    "recom_list_bosses_gl": [{
+        "number":1,
+        "name":"Extreme Ifrit X",
+        "reasons":"High Number of multihits(21), max damage closest to DLB2 generation damage (3x 9,999,999 MAX), can be used well with Monk Lore auto-ability e.g Incubus X",
+        "video_timing_secs":2258,
+        "video_timing":"37:38"
+    },{
+        "number":2,
+        "name":"Extreme Odin X",
+        "reasons":"Great damage output with High Element Enhance/Ability Chain jobs e.g Witch Origin or Mage(with Extreme MP Job Panel), generally unique in its places among Wind-type Supremes",
+        "video_timing_secs":2520,
+        "video_timing":"42:00"
+    },{
+        "number":3,
+        "name":"Extreme Ultima X",
+        "reasons":"Convenient usage, able to clearing yellow break gauge, diminished demerits due to recent powerful jobs lineup",
+        "video_timing_secs":2889,
+        "video_timing":"48:09"
+    },{    
+        "number":4,
+        "name":"Extreme Anima X",
+        "reasons":"The only dark attack-type among ranger supremes, able to clearing yellow break gauge, high number of hits when 1v1 with Scattershot",
+        "video_timing_secs":3024,
+        "video_timing":"50:24"
+    },{    
+        "number":5,
+        "name":"Extreme Adrammelech X",
+        "reasons":"Able to perform decent damage when suitable conditions meet.",
+        "video_timing_secs":3277,
+        "video_timing":"54:37"
+    },{
+        "number":6,
+        "name":"Extreme Bahamut X",
+        "reasons":"Ignores Defense & Critical Defense, able to unbroken nukes with recent job lineups (e.g Planet Flutter), can be well used along with Monk Lore auto-ability",
+        "video_timing_secs":3561,
+        "video_timing":"59:21"
+    }],
+    "recom_list_bosses_jp": [{
+        "number":1,
+        "name":"真・極イフリート",
+        "reasons":"多段数は高い(21), DMG限界突破II世代のダメージ(3x 9,999,999 MAX)に比べて最も近い（21x 999,999）、モンク心得オートアビ（例：真インキュバス）でよく使用できます",
+        "video_timing_secs":2258,
+        "video_timing":"37:38"
+    },{
+        "number":2,
+        "name":"真・極オーディン",
+        "reasons":"高い属性強化/チェーンジョブ(例：魔道師、ウィッチ・オリジン)で大きなダメージを与えることができます、風アルチカードの中でその立場をあります",
+        "video_timing_secs":2520,
+        "video_timing":"42:00"
+    },{
+        "number":3,
+        "name":"真・極アルテマ",
+        "reasons":"使いやすい,  BRKゲージを赤染でき、 最近の強力なラインナップジョブによるデメリットの減少",
+        "video_timing_secs":2889,
+        "video_timing":"48:09"
+    },{    
+        "number":4,
+        "name":"真・極アニマ",
+        "reasons":"レンジャーアルチの中で唯一の闇攻撃型カード、  BRKゲージを赤染できる,、 1対1の場合多い単体攻撃アビとして使用できます",
+        "video_timing_secs":3024,
+        "video_timing":"50:24"
+    },{    
+        "number":5,
+        "name":"真・極アドラメレク",
+        "reasons":"適切な条件が満たされた場合、良いなダメージを実行することができます。",
+        "video_timing_secs":3277,
+        "video_timing":"54:37"
+    },{
+        "number":6,
+        "name":"真・極バハムート",
+        "reasons":"敵の防御とクリティカ耐性を無視, 最近の強力ラインナップジョブとゴリ押しできる (例：ラネットフラッター)、 モンク心得オートアビでよく使用できます",
+        "video_timing_secs":3561,
+        "video_timing":"59:21"
+    }]
+}
