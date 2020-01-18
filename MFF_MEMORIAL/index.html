@@ -26,11 +26,9 @@
             letter-spacing: 2pt;
             text-shadow: 1px 0px 0px #c7c7c7, 0 0 0 #000, 0 0 0 #9f9f9f, 0px 0px 0px #c7c7c7;
         }
-
         .jp-title {
             font-family: 'Sawarabi Mincho', sans-serif;
         }
-
         #logo {
             filter: grayscale(100%);
             max-width: 180px;
@@ -96,7 +94,7 @@
             </div>
 
         </div>
-        
+
         <div class="col-xs-12 mff_flowers text-center">
             <p>Thank you for reaching here | ここに来てくれてありがとう </p>
         </div>
@@ -133,10 +131,15 @@
 
         $scope.addName = function () {
             var player_ign = prompt("Please enter your IGN | プレーヤー名を入力してください: ", "");
-            $scope.players.$add({
-                ign_name: player_ign
-            });
-            alert("Thank you for joining us, Warrior of Light | ご参加いただきありがとうございます、光の戦士");
+            if (player_ign != "") {
+                $scope.players.$add({
+                    ign_name: player_ign
+                });
+                alert("Thank you for joining us, Warrior of Light | ご参加いただきありがとうございます、光の戦士");
+            } else {
+                alert("Please enter valid name. | 有効な名前を入力してください。");
+            }
+
         }
     });
 </script>
