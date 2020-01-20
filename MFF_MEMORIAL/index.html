@@ -131,12 +131,15 @@
 
         $scope.addName = function () {
             var player_ign = prompt("Please enter your IGN | プレーヤー名を入力してください: ", "");
-            if (player_ign != "") {
+            if (player_ign != "" && player_ign <= 16) {
                 $scope.players.$add({
                     ign_name: player_ign
                 });
                 alert("Thank you for joining us, Warrior of Light | ご参加いただきありがとうございます、光の戦士");
-            } else {
+            } else if (player_ign.length > 16){
+                alert("Exceeded Length, Please enter valid name. | 名前の長さを超えています、有効な名前を入力してください。");
+            } 
+            else {
                 alert("Please enter valid name. | 有効な名前を入力してください。");
             }
 
