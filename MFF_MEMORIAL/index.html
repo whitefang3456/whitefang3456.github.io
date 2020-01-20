@@ -131,7 +131,7 @@
 
         $scope.addName = function () {
             var player_ign = prompt("Please enter your IGN | プレーヤー名を入力してください: ", "");
-            if (player_ign != "" && player_ign <= 16) {
+            if (player_ign != "" && player_ign.length <= 16) {
                 $scope.players.$add({
                     ign_name: player_ign
                 });
