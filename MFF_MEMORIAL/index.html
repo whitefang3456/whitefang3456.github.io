@@ -1,38 +1,47 @@
 <html>
 
 <head>
-    <title>MFF Memorial | メビウスFF 名誉の記念</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Italianno|Sawarabi+Mincho&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#000000">
-    <meta name="description" content="Mobius Final Fantasy Memorial Site/ メビウスFF名誉の記念">
-    <meta name="keywords" content="MobiusFF, Final Fantasy, メビウスFF, 名誉の記念, Memorial, Respect, 敬意">
-    <meta charset="UTF-8">
-    <!-- AngularJS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <title>MFF Memorial v2| メビウスFF 名誉の記念</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Italianno|Kosugi&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Mobius Final Fantasy Memorial Site/ メビウスFF名誉の記念" />
+    <meta name="keywords" content="MobiusFF, Final Fantasy, メビウスFF, 名誉の記念, Memorial, Respect, 敬意" />
+    <meta charset="UTF-8" />
+    <!-- VueJS -->
+    <script src="js/vue.js"></script>
     <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
-    <!-- AngularFire -->
-    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
+    <!-- For RTDB -->
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
+    <!-- VueFire -->
+    <script src="js/vuefire.js"></script>
+    <script data-name="BMC-Widget" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="hKoWIBk" data-description="Support me on Buy me a coffee!" data-message="Thank you for visiting. You can now buy me a coffee! 訪問していただきありがとうございます。こちらから寄付できます"
+        data-color="#FF813F" data-position="right" data-x_margin="18" data-y_margin="18"></script>
+    <script src="https://kit.fontawesome.com/fa535d2be5.js"></script>
     <style>
         body {
             margin: 0;
             background-image: url("https://vignette.wikia.nocookie.net/finalfantasy/images/2/2d/Selphietheend.jpg/revision/latest?cb=20100528201014");
             background-repeat: no-repeat;
             background-size: cover;
-            font-family: 'Italianno', cursive;
-            letter-spacing: 2pt;
+            font-family: "Italianno", "Sawarabi Mincho", cursive;
+            letter-spacing: 1pt;
             text-shadow: 1px 0px 0px #c7c7c7, 0 0 0 #000, 0 0 0 #9f9f9f, 0px 0px 0px #c7c7c7;
+            -webkit-overflow-scrolling: touch;
         }
+        
         .jp-title {
-            font-family: 'Sawarabi Mincho', sans-serif;
+            font-family: "Sawarabi Mincho", sans-serif;
         }
+        
         #logo {
             filter: grayscale(100%);
             max-width: 180px;
         }
+        
         .mffbody_cemetary {
             background: #fff;
             border: 4px #e1e1e1 solid;
@@ -42,109 +51,219 @@
             border-top-left-radius: 36px;
             border-top-right-radius: 36px;
         }
+        
         .mffbody_cemetary li {
             list-style: none;
             margin-bottom: 6px;
         }
+        
         .mffbody_cemetary p {
             color: rgba(149, 149, 149, 0.8);
-            font-size: 1.25em;
+            font-size: 12pt;
+            word-break: break-all;
+            letter-spacing: 2pt;
         }
+        
         .color_total {
             color: #9c8131 !important;
         }
+        
         .mff_flowers {
             min-height: 40px;
             background-color: #666;
             border: #333 1px solid;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
         }
+        
+        #modal_bg {
+            background: #fff;
+            opacity: 0.6;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            left: 0;
+            z-index: 999;
+            top: 0;
+        }
+        
+        .modal_letter {
+            padding: 16px 16px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            background: #fff;
+            border: 1px #000 solid;
+            max-width: 740px;
+            margin: 0 auto;
+            z-index: 1000;
+            border-bottom-right-radius: 12px;
+            border-bottom-left-radius: 12px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .modal_letter p {
+            font-size: 12pt;
+        }
+        
+        .modal_letter img {
+            border: 4px #e0e0e0 solid;
+            border-radius: 8px;
+        }
     </style>
 </head>
 
-<body ng-app="mffMemorial">
-    <div class="container">
-        <div class="mffbody_cemetary_shadow">
-            <div class="mffbody_cemetary" style="text-align:center" ng-controller="PlayerCtrl">
-                <div class="col-xs-12 text-right"><br>
-                    <button class="btn btn-default" ng-click="addName();">✿ Pay Respect | 敬意</button>
-                </div>
-                <!-- <input type="number" ng-model="percent"> -->
-                <img src="https://cdn.discordapp.com/attachments/561751589287886860/581165601939259401/logo.png"
-                    id="logo" alt="mff_logo">
-                <h3> Memorial of Honor | <span class="jp-title">名誉の記念</span></h3>
-                <h4 class="jp-title">(日本) 2015年6月4日 - 2020年3月31日</h4>
-                <h4>(GL) 3<sup>rd</sup> August 2016 - 20<sup>th</sup> June 2020</h4>
-                <div class="col-xs-12">
-                    <p>None shall remember the names of those who do not fight | 戦わない者は、誰も覚えない</p>
-                </div>
-
-                <p class="color_total"><b>Total Number of Warriors of Light | 光の戦士の総数 : <span
-                            class="jp-title">{{players.length}}</span></b>
-                </p>
-                <hr>
-                <div class="row" ng-if="loadingCompleted != true">
-                    <img src="https://shortpixel.com/img/spinner2.gif" alt="loading_spinner" width="60px">
-                </div>
-                <div class="row" ng-show="loadingCompleted">
-                    <div class="col-xs-4 col-md-3" ng-repeat="player in players">
-                        <p>{{player.ign_name}}</p>
+<body>
+    <div id="mffMemorial">
+        <div id="modal_bg" v-show="showBackdrop" class=""></div>
+        <!-- TOO BAD ! THE PASSCODE IS KEPT SAFELY IN SERVER, MAYBE SOMEWHERE IN MY MFF PROFILE... -->
+        <!-- 残念! パスコードはサーバーで安全に保たれていますが、MFFプロファイルのどこかにあるかもしれません... -->
+        <div class="modal_letter" v-show="showBackdrop">
+            <div class="text-right">
+                <button class="btn btn-danger" @click="resetModal">ⓧ <span translate="CLOSE_BTN" class="">CLOSE / 閉じる</span></button>
+            </div>
+            <!-- SECRET CONTENT -->
+            <h3>O' Warrior of Light, 光の戦士よ</h3>
+            <img v-bind:src="secret_url" width="100%" alt="THE END">
+            <hr>
+            <p v-html="secret_contents.replace(/(?:\r\n|\r|\n)/g, '<br />')">{{secret_contents}}</p>
+            <div class="text-right">
+                <h5 class=""><i>WFang ファング</i></h5>
+            </div>
+            <a :href="secret_url" download="MFF The End" class="btn btn-success">Download Image 写真DL (HD)</a>
+            <a href="https://twitter.com/wfang3456" target="_blank" rel="noopener noreferrer" class="btn btn-primary"> <i class="fab fa-twitter "></i>&nbsp;WFang</a>
+            <a href="https://twitter.com/pyms11" target="_blank" rel="noopener noreferrer" class="btn btn-primary"> <i class="fab fa-twitter "></i>&nbsp;ぱゆ/payu</a>
+        </div>
+        <div class="container">
+            <div class="mffbody_cemetary_shadow">
+                <div class="mffbody_cemetary" style="text-align:center" ng-controller="PlayerCtrl">
+                    <div class="col-xs-12 text-right">
+                        <br />
+                        <button class="btn btn-default" @click="addKey">
+                            🔒 Unlock | 解除
+                          </button>
+                        <button class="btn btn-default" @click="addName">
+                ✿ Pay Respect | 敬意
+              </button>
                     </div>
+                    <img src="https://cdn.discordapp.com/attachments/561751589287886860/581165601939259401/logo.png" id="logo" alt="mff_logo" />
+                    <h3>
+                        Memorial of Honor | <span class="jp-title">名誉の記念</span>
+                    </h3>
+                    <h4 class="jp-title">(日本) 2015年6月4日 - 2020年3月31日</h4>
+                    <h4>(GL) 3<sup>rd</sup> August 2016 - 20<sup>th</sup> June 2020</h4>
+                    <div class="col-xs-12">
+                        <p>
+                            None shall remember the names of those who do not fight | 戦わない者は、誰も覚えない
+                        </p>
+                    </div>
+                    <p class="color_total">
+                        <b>Total Number of Warriors of Light | 光の戦士の総数 :
+                    <span class="jp-title">{{players.length}}</span></b>
+                        <hr />
+                        <div class="row" v-if="players.length == 0">
+                            <img src="https://shortpixel.com/img/spinner2.gif" alt="loading_spinner" width="60px" />
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4 col-md-3" v-for="player in players">
+                                <p>{{player.ign_name}}</p>
+                            </div>
+                        </div>
                 </div>
             </div>
-
-        </div>
-
-        <div class="col-xs-12 mff_flowers text-center">
-            <p>Thank you for reaching here | ここに来てくれてありがとう </p>
+            <div class="col-xs-12 mff_flowers text-center">
+                <p>Thank you for reaching here | ここに来てくれてありがとう</p>
+                <a href="https://www.buymeacoffee.com/hKoWIBk" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/lato-blue.png" alt="Buy Me A Coffee" style="height: 34px !important;width: 146px !important;"></a>
+            </div>
         </div>
     </div>
 </body>
 <script type="text/javascript">
-    function getValue() {
-        var retVal = prompt("Please enter your IGN | ゲーム名を入力してください: ", "IGN / ゲーム名");
-        //    document.write("You have entered : " + retVal);
-    }
-    // Initialize the Firebase SDK
-    var firebaseConfig = {
-        apiKey: "AIzaSyB1C1ev8WDcGJ2SWf_atj4rQkusanR9_BI",
-        authDomain: "mffmemorial.firebaseapp.com",
-        databaseURL: "https://mffmemorial.firebaseio.com",
-        projectId: "mffmemorial",
-        storageBucket: "mffmemorial.appspot.com",
-        messagingSenderId: "27116628454",
-        appId: "1:27116628454:web:aa447f5b69f7a9125b0e27",
-        measurementId: "G-BT07W61774"
-    };
-    firebase.initializeApp(firebaseConfig);
-    var app = angular.module("mffMemorial", ["firebase"]);
-    app.controller("PlayerCtrl", function ($scope, $firebaseArray) {
-        $scope.players = [];
-        $scope.loadingCompleted = false;
-        var ref = firebase.database().ref().child("players");
-        var syncArray = $firebaseArray(ref);
-        syncArray.$loaded().then(function (data) {
-            console.log('Initial data loaded', data.length);
-            $scope.players = syncArray;
-            $scope.loadingCompleted = true;
-        });
+    var db = firebase
+        .initializeApp({
+            apiKey: "AIzaSyB1C1ev8WDcGJ2SWf_atj4rQkusanR9_BI",
+            authDomain: "mffmemorial.firebaseapp.com",
+            databaseURL: "https://mffmemorial.firebaseio.com",
+            projectId: "mffmemorial",
+            storageBucket: "mffmemorial.appspot.com",
+            messagingSenderId: "27116628454",
+            appId: "1:27116628454:web:aa447f5b69f7a9125b0e27",
+            measurementId: "G-BT07W61774"
+        })
+    var app = db.database()
+    var playerRef = app.ref("players")
+    var keyRef = app.ref("secrets")
 
-        $scope.addName = function () {
-            var player_ign = prompt("Please enter your IGN | プレーヤー名を入力してください: ", "");
-            if (player_ign != "" && player_ign.length <= 16) {
-                $scope.players.$add({
-                    ign_name: player_ign
-                });
-                alert("Thank you for joining us, Warrior of Light | ご参加いただきありがとうございます、光の戦士");
-            } else if (player_ign.length > 16){
-                alert("Exceeded Length, Please enter valid name. | 名前の長さを超えています、有効な名前を入力してください。");
-            } 
-            else {
-                alert("Please enter valid name. | 有効な名前を入力してください。");
+    /* global Vue, firebase */
+    Vue.use(Vuefire.rtdbPlugin, {
+            wait: true
+        })
+        // initialize VueApp
+    var vm = new Vue({
+        el: '#mffMemorial',
+        data: {
+            players: [],
+            secrets: [],
+            secret_contents: '',
+            secret_url: '',
+            showBackdrop: false
+        },
+        computed: {
+            withBrTags: function() {
+                const doc = this.secret_contents
+                return doc.replace(/(\\r)*\\n/g, '<br>')
             }
-
+        },
+        firebase: {
+            players: playerRef,
+            secrets: keyRef
+        },
+        methods: {
+            addName: function(event) {
+                var player_ign = prompt(
+                    "Please enter your IGN | プレーヤー名を入力してください: ",
+                    ""
+                );
+                if (player_ign != "" && player_ign.length <= 16) {
+                    playerRef.push({
+                        ign_name: player_ign
+                    })
+                    alert(
+                        "Thank you for joining us, Warrior of Light | ご参加いただきありがとうございます、光の戦士"
+                    );
+                } else if (player_ign.length > 16) {
+                    alert(
+                        "Exceeded Length, Please enter valid name. | 名前の長さを超えています、有効な名前を入力してください。"
+                    );
+                } else {
+                    alert("Please enter valid name. | 有効な名前を入力してください。");
+                }
+            },
+            addKey: function(event) {
+                var legendary_key = prompt(
+                    "🔑 Please enter the Passcode | パスコードを入力してください: ",
+                    ""
+                )
+                return keyRef.once('value').then(function(snapshot) {
+                    if (legendary_key === snapshot.val().passcode) {
+                        alert("🔓 Kacha !  カチャ !")
+                        vm.showBackdrop = true
+                        vm.secret_contents = snapshot.val().letter_contents
+                        vm.secret_url = snapshot.val().url
+                    } else {
+                        alert("🔒 Nothing unusual 何も起きていない ...")
+                    }
+                })
+            },
+            resetModal: function(event) {
+                vm.showBackdrop = false
+                vm.secret_contents = ''
+                vm.secret_url = ''
+            }
         }
-    });
+    })
 </script>
 
 </html>
