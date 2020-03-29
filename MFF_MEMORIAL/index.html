@@ -18,8 +18,10 @@
     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
     <!-- VueFire -->
     <script src="js/vuefire.js"></script>
-    <script data-name="BMC-Widget" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="hKoWIBk" data-description="Support me on Buy me a coffee!" data-message="Thank you for visiting. You can now buy me a coffee! 訪問していただきありがとうございます。こちらから寄付できます"
-        data-color="#FF813F" data-position="right" data-x_margin="18" data-y_margin="18"></script>
+    <!-- <script data-name="BMC-Widget" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="hKoWIBk"
+        data-description="Support me on Buy me a coffee!"
+        data-message="Thank you for visiting. You can now buy me a coffee! 訪問していただきありがとうございます。こちらから寄付できます"
+        data-color="#FF813F" data-position="right" data-x_margin="18" data-y_margin="18"></script> -->
     <script src="https://kit.fontawesome.com/fa535d2be5.js"></script>
     <style>
         body {
@@ -32,16 +34,16 @@
             text-shadow: 1px 0px 0px #c7c7c7, 0 0 0 #000, 0 0 0 #9f9f9f, 0px 0px 0px #c7c7c7;
             -webkit-overflow-scrolling: touch;
         }
-        
+
         .jp-title {
             font-family: "Sawarabi Mincho", sans-serif;
         }
-        
+
         #logo {
             filter: grayscale(100%);
             max-width: 180px;
         }
-        
+
         .mffbody_cemetary {
             background: #fff;
             border: 4px #e1e1e1 solid;
@@ -51,30 +53,30 @@
             border-top-left-radius: 36px;
             border-top-right-radius: 36px;
         }
-        
+
         .mffbody_cemetary li {
             list-style: none;
             margin-bottom: 6px;
         }
-        
+
         .mffbody_cemetary p {
             color: rgba(149, 149, 149, 0.8);
             font-size: 12pt;
             word-break: break-all;
             letter-spacing: 2pt;
         }
-        
+
         .color_total {
             color: #9c8131 !important;
         }
-        
+
         .mff_flowers {
             min-height: 40px;
             background-color: #666;
             border: #333 1px solid;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
         }
-        
+
         #modal_bg {
             background: #fff;
             opacity: 0.6;
@@ -85,7 +87,7 @@
             z-index: 999;
             top: 0;
         }
-        
+
         .modal_letter {
             padding: 16px 16px;
             position: absolute;
@@ -103,11 +105,11 @@
             overflow-x: hidden;
             -webkit-overflow-scrolling: touch;
         }
-        
+
         .modal_letter p {
             font-size: 12pt;
         }
-        
+
         .modal_letter img {
             border: 4px #e0e0e0 solid;
             border-radius: 8px;
@@ -122,18 +124,21 @@
         <!-- 残念! パスコードはサーバーで安全に保たれていますが、MFFプロファイルのどこかにあるかもしれません... -->
         <div class="modal_letter" v-show="showBackdrop">
             <div class="text-right">
-                <button class="btn btn-danger" @click="resetModal">ⓧ <span translate="CLOSE_BTN" class="">CLOSE / 閉じる</span></button>
+                <button class="btn btn-danger" @click="resetModal">ⓧ <span translate="CLOSE_BTN" class="">CLOSE /
+                        閉じる</span></button>
             </div>
             <!-- SECRET CONTENT -->
             <h3>O' Warrior of Light, 光の戦士よ</h3>
-            <img v-bind:src="secret_url" width="100%" alt="THE END">
+            <img v-bind:src="secret_url" width="100%" alt="THE END" @contextmenu="handler($event)">
             <hr>
             <p v-html="secret_contents.replace(/(?:\r\n|\r|\n)/g, '<br />')">{{secret_contents}}</p>
             <div class="text-right">
                 <h5 class=""><i>WFang ファング</i></h5>
             </div>
-            <a href="https://twitter.com/wfang3456" target="_blank" rel="noopener noreferrer" class="btn btn-primary"> <i class="fab fa-twitter "></i>&nbsp;WFang</a>
-            <a href="https://twitter.com/pyms11" target="_blank" rel="noopener noreferrer" class="btn btn-primary"> <i class="fab fa-twitter "></i>&nbsp;ぱゆ/payu</a>
+            <a href="https://twitter.com/wfang3456" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                <i class="fab fa-twitter "></i>&nbsp;WFang</a>
+            <a href="https://twitter.com/pyms11" target="_blank" rel="noopener noreferrer" class="btn btn-primary"> <i
+                    class="fab fa-twitter "></i>&nbsp;ぱゆ/payu</a>
         </div>
         <div class="container">
             <div class="mffbody_cemetary_shadow">
@@ -142,12 +147,13 @@
                         <br />
                         <button class="btn btn-default" @click="addKey">
                             🔒 Unlock | 解除
-                          </button>
+                        </button>
                         <button class="btn btn-default" @click="addName">
-                ✿ Pay Respect | 敬意
-              </button>
+                            ✿ Pay Respect | 敬意
+                        </button>
                     </div>
-                    <img src="https://cdn.discordapp.com/attachments/561751589287886860/581165601939259401/logo.png" id="logo" alt="mff_logo" />
+                    <img src="https://cdn.discordapp.com/attachments/561751589287886860/581165601939259401/logo.png"
+                        id="logo" alt="mff_logo" />
                     <h3>
                         Memorial of Honor | <span class="jp-title">名誉の記念</span>
                     </h3>
@@ -160,7 +166,7 @@
                     </div>
                     <p class="color_total">
                         <b>Total Number of Warriors of Light | 光の戦士の総数 :
-                    <span class="jp-title">{{players.length}}</span></b>
+                            <span class="jp-title">{{players.length}}</span></b>
                         <hr />
                         <div class="row" v-if="players.length == 0">
                             <img src="https://shortpixel.com/img/spinner2.gif" alt="loading_spinner" width="60px" />
@@ -174,7 +180,9 @@
             </div>
             <div class="col-xs-12 mff_flowers text-center">
                 <p>Thank you for reaching here | ここに来てくれてありがとう</p>
-                <a href="https://www.buymeacoffee.com/hKoWIBk" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/lato-blue.png" alt="Buy Me A Coffee" style="height: 34px !important;width: 146px !important;"></a>
+                <!-- <a href="https://www.buymeacoffee.com/hKoWIBk" target="_blank"><img
+                        src="https://cdn.buymeacoffee.com/buttons/lato-blue.png" alt="Buy Me A Coffee"
+                        style="height: 34px !important;width: 146px !important;"></a> -->
             </div>
         </div>
     </div>
@@ -197,9 +205,9 @@
 
     /* global Vue, firebase */
     Vue.use(Vuefire.rtdbPlugin, {
-            wait: true
-        })
-        // initialize VueApp
+        wait: true
+    })
+    // initialize VueApp
     var vm = new Vue({
         el: '#mffMemorial',
         data: {
@@ -210,7 +218,7 @@
             showBackdrop: false
         },
         computed: {
-            withBrTags: function() {
+            withBrTags: function () {
                 const doc = this.secret_contents
                 return doc.replace(/(\\r)*\\n/g, '<br>')
             }
@@ -220,7 +228,11 @@
             secrets: keyRef
         },
         methods: {
-            addName: function(event) {
+            handler: function (e) {
+            //do stuff
+            e.preventDefault();
+        },
+            addName: function (event) {
                 var player_ign = prompt(
                     "Please enter your IGN | プレーヤー名を入力してください: ",
                     ""
@@ -240,12 +252,12 @@
                     alert("Please enter valid name. | 有効な名前を入力してください。");
                 }
             },
-            addKey: function(event) {
+            addKey: function (event) {
                 var legendary_key = prompt(
                     "🔑 Please enter the Passcode | パスコードを入力してください: ",
                     ""
                 )
-                return keyRef.once('value').then(function(snapshot) {
+                return keyRef.once('value').then(function (snapshot) {
                     if (legendary_key === snapshot.val().passcode) {
                         alert("🔓 Kacha !  カチャ !")
                         vm.showBackdrop = true
@@ -256,7 +268,7 @@
                     }
                 })
             },
-            resetModal: function(event) {
+            resetModal: function (event) {
                 vm.showBackdrop = false
                 vm.secret_contents = ''
                 vm.secret_url = ''
