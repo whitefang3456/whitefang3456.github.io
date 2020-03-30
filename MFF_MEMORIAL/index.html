@@ -26,8 +26,8 @@
     <style>
         body {
             margin: 0;
-            background-image: url("https://vignette.wikia.nocookie.net/finalfantasy/images/2/2d/Selphietheend.jpg/revision/latest?cb=20100528201014");
-            background-repeat: no-repeat;
+            background-image: url("https://firebasestorage.googleapis.com/v0/b/mffmemorial.appspot.com/o/TheEnd.jpg?alt=media&token=559ddb09-68a3-4da4-b913-738951c11660");
+            /* background-repeat: no-repeat; */
             background-size: cover;
             font-family: "Italianno", "Sawarabi Mincho", cursive;
             letter-spacing: 1pt;
@@ -114,6 +114,12 @@
             border: 4px #e0e0e0 solid;
             border-radius: 8px;
         }
+        #memorialbody{
+            max-height: 900px;
+            overflow-y: scroll;
+        overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
     </style>
 </head>
 
@@ -171,7 +177,7 @@
                         <div class="row" v-if="players.length == 0">
                             <img src="https://shortpixel.com/img/spinner2.gif" alt="loading_spinner" width="60px" />
                         </div>
-                        <div class="row">
+                        <div class="row" id="memorialbody">
                             <div class="col-xs-4 col-md-3" v-for="player in players">
                                 <p>{{player.ign_name}}</p>
                             </div>
