@@ -120,6 +120,10 @@
         overflow-x: hidden;
             -webkit-overflow-scrolling: touch;
         }
+        #unlockBtn{
+            background: #c19628;
+    color: white;
+        }
     </style>
 </head>
 
@@ -151,7 +155,7 @@
                 <div class="mffbody_cemetary" style="text-align:center" ng-controller="PlayerCtrl">
                     <div class="col-xs-12 text-right">
                         <br />
-                        <button class="btn btn-default" @click="addKey">
+                        <button id="unlockBtn" class="btn btn-default" @click="addKey">
                             🔒 Unlock | 解除
                         </button>
                         <button class="btn btn-default" @click="addName">
@@ -243,18 +247,23 @@
                     "Please enter your IGN | プレーヤー名を入力してください: ",
                     ""
                 );
-                if (player_ign != "" && player_ign.length <= 16) {
+                if (player_ign != "" && player_ign.length <= 16 && (player_ign !== 'MEBIUSLOVE')) {
                     playerRef.push({
                         ign_name: player_ign
                     })
                     alert(
                         "Thank you for joining us, Warrior of Light | ご参加いただきありがとうございます、光の戦士"
                     );
-                } else if (player_ign.length > 16) {
+                }
+                else if (player_ign.length > 16) {
                     alert(
                         "Exceeded Length, Please enter valid name. | 名前の長さを超えています、有効な名前を入力してください。"
-                    );
-                } else {
+                    );    
+                }
+                else if (player_ign == 'MEBIUSLOVE') {
+                    alert("Could it be another button? | 別のボタンでしょうか？");
+                 }
+                else {
                     alert("Please enter valid name. | 有効な名前を入力してください。");
                 }
             },
